@@ -44,31 +44,47 @@
                 </thead>
                 <tbody>
                 <?php
-                $cn = new mysqli (HOST, USER, PW, DB);
-                $sql="SELECT admin_id, name, contact, address, username, password FROM tbladmin";
-                $qry=$cn->prepare($sql);
-                $qry->execute();
-                $qry->bind_result($admin_id, $name, $contact, $address, $username, $password);
-                $qry->store_result();
-                while ($qry->fetch()){
-                    echo "<tr>
-                        <td class='text-center'>
-                            <button class='btn elevation-1 btn-sm btn-success btn-xs' data-toggle='modal' data-target='#edit-admin-$admin_id'>
-                                <i class='nav-icon fas fa-pen'></i>
-                            </button> 
-                            <button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-admin-$admin_id'>
-                                <i class='nav-icon fas fa-trash'></i>
-                            </button>
-                        </td>
-                        <td>$name</td>
-                        <td>$contact</td>
-                        <td>$address</td>
-                        <td>$username</td>
-                        <td>$password</td>
-                        </tr>";
-                    
-                    include 'edit-modal.php';
-                    include 'delete-modal.php';
+                $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+                $user = "postgres"; // Nombre de usuario de la base de datos
+                $password = "9090"; // Contraseña de la base de datos
+                $dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+                $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
+                if ($conn) {
+                    $sql = "SELECT admin_id, name, contact, address, username, password FROM tbladmin";
+                    $stmt = $conn->prepare($sql);
+                    $stmt->execute();
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($results as $row) {
+                        $admin_id = $row['admin_id'];
+                        $name = $row['name'];
+                        $contact = $row['contact'];
+                        $address = $row['address'];
+                        $username = $row['username'];
+                        $password = $row['password'];
+
+                        echo "<tr>
+                            <td class='text-center'>
+                                <button class='btn elevation-1 btn-sm btn-success btn-xs' data-toggle='modal' data-target='#edit-admin-$admin_id'>
+                                    <i class='nav-icon fas fa-pen'></i>
+                                </button> 
+                                <button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-admin-$admin_id'>
+                                    <i class='nav-icon fas fa-trash'></i>
+                                </button>
+                            </td>
+                            <td>$name</td>
+                            <td>$contact</td>
+                            <td>$address</td>
+                            <td>$username</td>
+                            <td>$password</td>
+                            </tr>";
+
+                        include 'edit-modal.php';
+                        include 'delete-modal.php';
+                    }
+                } else {
+                    echo "Error al conectar a la base de datos.";
                 }
                 ?>
                 </tbody>

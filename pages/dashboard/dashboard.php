@@ -26,14 +26,22 @@
                 <div class="small-box bg-info">
                     <div class="inner">
                         <?php
-                        $cn = new mysqli (HOST, USER, PW, DB);
-                        $sql="SELECT COUNT(car_id) FROM tblcar";
-                        $qry=$cn->prepare($sql);
-                        $qry->execute();
-                        $qry->bind_result($ct_car_id);
-                        $qry->store_result();
-                        $qry->fetch();
-                        echo "<h3>$ct_car_id</h3>"
+                        $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+                        $user = "postgres"; // Nombre de usuario de la base de datos
+                        $password = "9090"; // Contraseña de la base de datos
+                        $dbname = "bd_rentaCar"; // Nombre de la base de datos
+                        
+                        $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
+                        if ($conn) {
+                            $sql = "SELECT COUNT(car_id) FROM tblcar";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
+                            $ct_car_id = $stmt->fetchColumn();
+                            echo "<h3>$ct_car_id</h3>";
+                        } else {
+                            echo "Error al conectar a la base de datos.";
+                        }
                         ?>
                         <p>No. of Cars</p>
                     </div>
@@ -46,14 +54,15 @@
                 <div class="small-box bg-warning">
                     <div class="inner">
                         <?php
-                        $cn = new mysqli (HOST, USER, PW, DB);
-                        $sql="SELECT COUNT(owner_id) FROM tblowner";
-                        $qry=$cn->prepare($sql);
-                        $qry->execute();
-                        $qry->bind_result($ct_owner_id);
-                        $qry->store_result();
-                        $qry->fetch();
-                        echo "<h3>$ct_owner_id</h3>"
+                        if ($conn) {
+                            $sql = "SELECT COUNT(owner_id) FROM tblowner";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
+                            $ct_owner_id = $stmt->fetchColumn();
+                            echo "<h3>$ct_owner_id</h3>";
+                        } else {
+                            echo "Error al conectar a la base de datos.";
+                        }
                         ?>
                         <p>No. of Owners</p>
                     </div>
@@ -66,14 +75,15 @@
                 <div class="small-box bg-success">
                     <div class="inner">
                         <?php
-                        $cn = new mysqli (HOST, USER, PW, DB);
-                        $sql="SELECT COUNT(customer_id) FROM tblcustomer";
-                        $qry=$cn->prepare($sql);
-                        $qry->execute();
-                        $qry->bind_result($ct_customer_id);
-                        $qry->store_result();
-                        $qry->fetch();
-                        echo "<h3>$ct_customer_id</h3>"
+                        if ($conn) {
+                            $sql = "SELECT COUNT(customer_id) FROM tblcustomer";
+                            $stmt = $conn->prepare($sql);
+                            $stmt->execute();
+                            $ct_customer_id = $stmt->fetchColumn();
+                            echo "<h3>$ct_customer_id</h3>";
+                        } else {
+                            echo "Error al conectar a la base de datos.";
+                        }
                         ?>
                         <p>No. of Customers</p>
                     </div>

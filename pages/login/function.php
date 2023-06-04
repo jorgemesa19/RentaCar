@@ -1,84 +1,102 @@
 <?php
-if(isset($_POST['sign-in'])){
+if (isset($_POST['sign-in'])) {
     session_start();
+    
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    
+    // Parámetros de conexión a la base de datos
+    $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+    $user = "postgres"; // Nombre de usuario de la base de datos
+    $password_db = "9090"; // Contraseña de la base de datos
+    $dbname = "bd_rentaCar"; // Nombre de la base de datos
+    
+    try {
+        // Establecer la conexión
+        $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password_db);
         
-    $username= $_POST['username'];
-    $password= $_POST['password'];
-//    $password = md5($password);
+        // Configurar el modo de error para lanzar excepciones en caso de errores
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         
-    require_once '../database_config/config.php';
-    $cn = new mysqli (HOST, USER, PW, DB);
-    $sql="SELECT admin_id FROM tbladmin WHERE username=? AND password=?";
-    $qry=$cn->prepare($sql);
-    $qry->bind_param("ss", $username, $password);
-    $qry->execute();
-    $qry->bind_result($admin_id);
-    $qry->store_result();
-    $qry->fetch();
+        // Consultar la tabla tbladmin
+        $sql = "SELECT admin_id FROM tbladmin WHERE username=? AND password=?";
+        $stmt = $conn->prepare($sql);
+        $stmt->execute([$username, $password]);
         
-    if($qry->num_rows==1){//chek if there is data in tbladmin
-        $_SESSION['user_id'] = $admin_id;
-        $_SESSION['user_type'] = "Administrator";
-        header("location:../dashboard/dashboard.php");
-           
-    } else {//check if there is data in tblowner
-        $cn = new mysqli (HOST, USER, PW, DB);
-        $sql="SELECT owner_id, account_status FROM tblowner WHERE username=? AND password=?";
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("ss", $username, $password);
-        $qry->execute();
-        $qry->bind_result($owner_id, $account_status);
-        $qry->store_result();
-        $qry->fetch();
-        if($qry->num_rows==1){
-            if ($account_status == 1){
-                $_SESSION['user_id'] = $owner_id;
-                $_SESSION['user_type'] = "Owner";
-                header("location:../dashboard/dashboard.php");
-            } else {
-                echo "
-                <div class='alert alert-warning alert-dismissible'>
-                  <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
-                  <i class='icon fas fa-exclamation-triangle'></i>
-                  Your account is deactivated!
-                </div>
-                ";
-            }
-        } else {//check if in tblcustomer
-            $cn = new mysqli (HOST, USER, PW, DB);
-            $sql="SELECT customer_id, account_status FROM tblcustomer WHERE username=? AND password=?";
-            $qry=$cn->prepare($sql);
-            $qry->bind_param("ss", $username, $password);
-            $qry->execute();
-            $qry->bind_result($customer_id, $account_status);
-            $qry->store_result();
-            $qry->fetch();
-            if($qry->num_rows==1){
-                if ($account_status == 1){
-                    $_SESSION['user_id'] = $customer_id;
-                    $_SESSION['user_type'] = "Customer";
+        if ($stmt->rowCount() == 1) {
+            // Usuario encontrado en tbladmin
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            $admin_id = $row['admin_id'];
+            
+            $_SESSION['user_id'] = $admin_id;
+            $_SESSION['user_type'] = "Administrator";
+            header("location:../dashboard/dashboard.php");
+        } else {
+            // Consultar la tabla tblowner
+            $sql = "SELECT owner_id, account_status FROM tblowner WHERE username=? AND password=?";
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$username, $password]);
+            
+            if ($stmt->rowCount() == 1) {
+                // Usuario encontrado en tblowner
+                $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                $owner_id = $row['owner_id'];
+                $account_status = $row['account_status'];
+                
+                if ($account_status == 1) {
+                    $_SESSION['user_id'] = $owner_id;
+                    $_SESSION['user_type'] = "Owner";
                     header("location:../dashboard/dashboard.php");
                 } else {
                     echo "
                     <div class='alert alert-warning alert-dismissible'>
                       <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
                       <i class='icon fas fa-exclamation-triangle'></i>
-                      Your account is deactivated!
+                      ¡Tu cuenta está desactivada!
                     </div>
                     ";
                 }
-            
             } else {
-                echo "
-                <div class='alert alert-warning alert-dismissible'>
+                // Consultar la tabla tblcustomer
+                $sql = "SELECT customer_id, account_status FROM tblcustomer WHERE username=? AND password=?";
+                $stmt = $conn->prepare($sql);
+                $stmt->execute([$username, $password]);
+                
+                if ($stmt->rowCount() == 1) {
+                    // Usuario encontrado en tblcustomer
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    $customer_id = $row['customer_id'];
+                    $account_status = $row['account_status'];
+                    
+                    if ($account_status == 1) {
+                        $_SESSION['user_id'] = $customer_id;
+                        $_SESSION['user_type'] = "Customer";
+                        header("location:../dashboard/dashboard.php");
+                    } else {
+                        echo "
+                        <div class='alert alert-warning alert-dismissible'>
                           <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
                           <i class='icon fas fa-exclamation-triangle'></i>
-                          Incorrect Username or Password!
+                          ¡Tu cuenta está desactivada!
                         </div>
-                ";
+                        ";
+                    }
+                } else {
+                    echo "
+                    <div class='alert alert-warning alert-dismissible'>
+                      <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>×</button>
+                      <i class='icon fas fa-exclamation-triangle'></i>
+                      ¡Nombre de usuario o contraseña incorrectos!
+                    </div>
+                    ";
+                }
             }
         }
-    
+        
+        // Cerrar la conexión
+        $conn = null;
+    } catch (PDOException $e) {
+        echo "Error de conexión: " . $e->getMessage();
     }
 }
 ?>

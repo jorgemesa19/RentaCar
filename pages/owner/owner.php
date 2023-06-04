@@ -51,59 +51,78 @@
                 </thead>
                 <tbody>
                 <?php
-                $cn = new mysqli (HOST, USER, PW, DB);
-                if ($_SESSION['user_type'] == "Administrator"){
-                    $sql="SELECT owner_id, owner_name, address, contact, profile_image, fb_account, username, password, admin_id, account_status FROM tblowner";
-                }
-                if ($_SESSION['user_type'] == "Owner"){
-                    $owner_id = $_SESSION['user_id'];
-                    $sql="SELECT owner_id, owner_name, address, contact, profile_image, fb_account, username, password, admin_id, account_status FROM tblowner WHERE owner_id = $owner_id";
-                }
-                $qry=$cn->prepare($sql);
-                $qry->execute();
-                $qry->bind_result($owner_id, $owner_name, $address, $contact, $profile_image, $fb_account, $username, $password, $admin_id, $account_status);
-                $qry->store_result();
-                while ($qry->fetch()){
-                    $delete_btn = "";
+                $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+                $user = "postgres"; // Nombre de usuario de la base de datos
+                $password = "9090"; // Contraseña de la base de datos
+                $dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+                $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
+                if ($conn) {
                     if ($_SESSION['user_type'] == "Administrator"){
-                        $delete_btn = "<button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-owner-$owner_id'>
+                        $sql = "SELECT owner_id, owner_name, address, contact, profile_image, fb_account, username, password, admin_id, account_status FROM tblowner";
+                    }
+                    if ($_SESSION['user_type'] == "Owner"){
+                        $owner_id = $_SESSION['user_id'];
+                        $sql = "SELECT owner_id, owner_name, address, contact, profile_image, fb_account, username, password, admin_id, account_status FROM tblowner WHERE owner_id = $owner_id";
+                    }
+                    $stmt = $conn->prepare($sql);
+                    $stmt->execute();
+                    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($results as $row) {
+                        $owner_id = $row['owner_id'];
+                        $owner_name = $row['owner_name'];
+                        $address = $row['address'];
+                        $contact = $row['contact'];
+                        $profile_image = $row['profile_image'];
+                        $fb_account = $row['fb_account'];
+                        $username = $row['username'];
+                        $password = $row['password'];
+                        $account_status = $row['account_status'];
+
+                        $delete_btn = "";
+                        if ($_SESSION['user_type'] == "Administrator"){
+                            $delete_btn = "<button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-owner-$owner_id'>
                                 <i class='nav-icon fas fa-trash'></i> Delete
                             </button>";
-                    }
-                    
-                    if ($account_status == 1){
-                        $status_text = "<span class='badge badge-success'>Active</span>";
-                    } else {
-                        $status_text = "<span class='badge badge-warning'>Inactive</span>";
-                    }
-                    echo "<tr>
-                        <td class='text-center'>
-                            <button class='btn elevation-1 btn-sm btn-success btn-xs' data-toggle='modal' data-target='#edit-owner-$owner_id'>
-                                <i class='nav-icon fas fa-pen'></i> Edit
-                            </button> 
-                            $delete_btn
-                            <a href='../owner-credential/owner-credential.php?owner_id=$owner_id&owner_name=$owner_name'>
-                                <button class='btn elevation-1 btn-sm btn-default btn-xs'>
-                                    <i class='nav-icon fas fa-user'></i> Credentials
+                        }
+
+                        if ($account_status == 1){
+                            $status_text = "<span class='badge badge-success'>Active</span>";
+                        } else {
+                            $status_text = "<span class='badge badge-warning'>Inactive</span>";
+                        }
+                        echo "<tr>
+                            <td class='text-center'>
+                                <button class='btn elevation-1 btn-sm btn-success btn-xs' data-toggle='modal' data-target='#edit-owner-$owner_id'>
+                                    <i class='nav-icon fas fa-pen'></i> Edit
                                 </button> 
-                            </a>
-                        </td>
-                        <td class='text-center'>
-                            <img src='../uploads/$profile_image' class='img' style='width:100px;' alt='Image'><br>
-                            <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_image-$owner_id'><i class='nav-icon fas fa-pen'></i> Edit Picture</button>
-                        </td>
-                        <td>$owner_name</td>
-                        <td>$address</td>
-                        <td>$contact</td>
-                        <td>$fb_account</td>
-                        <td>$username</td>
-                        <td>$password</td>
-                        <td>$status_text</td>
-                        </tr>";
-                    
-                    include 'edit-modal.php';
-                    include 'edit-profile_image-modal.php';
-                    include 'delete-modal.php';
+                                $delete_btn
+                                <a href='../owner-credential/owner-credential.php?owner_id=$owner_id&owner_name=$owner_name'>
+                                    <button class='btn elevation-1 btn-sm btn-default btn-xs'>
+                                        <i class='nav-icon fas fa-user'></i> Credentials
+                                    </button> 
+                                </a>
+                            </td>
+                            <td class='text-center'>
+                                <img src='../uploads/$profile_image' class='img' style='width:100px;' alt='Image'><br>
+                                <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_image-$owner_id'><i class='nav-icon fas fa-pen'></i> Edit Picture</button>
+                            </td>
+                            <td>$owner_name</td>
+                            <td>$address</td>
+                            <td>$contact</td>
+                            <td>$fb_account</td>
+                            <td>$username</td>
+                            <td>$password</td>
+                            <td>$status_text</td>
+                            </tr>";
+
+                        include 'edit-modal.php';
+                        include 'edit-profile_image-modal.php';
+                        include 'delete-modal.php';
+                    }
+                } else {
+                    echo "Failed to connect to the database.";
                 }
                 ?>
                 </tbody>

@@ -55,7 +55,13 @@
                 </thead>
                 <tbody>
                 <?php
-                $cn = new mysqli (HOST, USER, PW, DB);
+                $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+                $user = "postgres"; // Nombre de usuario de la base de datos
+                $password = "9090"; // Contraseña de la base de datos
+                $dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+                $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
                 if ($_SESSION['user_type'] == "Administrator"){
                     $sql="SELECT car.car_id, car.car_name, car.description, car.car_model_year, car.car_brand, car.color, car.capacity, car.plate_number, car.rate, car.owner_id, car.status, car.proof_of_ownership, owner.owner_name 
                     FROM tblcar AS car
@@ -76,11 +82,25 @@
                     INNER JOIN tblowner AS owner
                     ON car.owner_id = owner.owner_id";
                 }
-                $qry=$cn->prepare($sql);
-                $qry->execute();
-                $qry->bind_result($car_id, $car_name, $description, $car_model_year, $car_brand, $color, $capacity, $plate_number, $rate, $owner_id, $status, $proof_of_ownership, $owner_name);
-                $qry->store_result();
-                while ($qry->fetch()){
+                $stmt = $conn->prepare($sql);
+                $stmt->execute();
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach ($result as $row) {
+                    $car_id = $row['car_id'];
+                    $car_name = $row['car_name'];
+                    $description = $row['description'];
+                    $car_model_year = $row['car_model_year'];
+                    $car_brand = $row['car_brand'];
+                    $color = $row['color'];
+                    $capacity = $row['capacity'];
+                    $plate_number = $row['plate_number'];
+                    $rate = $row['rate'];
+                    $owner_id = $row['owner_id'];
+                    $status = $row['status'];
+                    $proof_of_ownership = $row['proof_of_ownership'];
+                    $owner_name = $row['owner_name'];
+
                     if ($_SESSION['user_type'] == "Administrator"){
                          $action_btns = "
                             <a href='edit-car.php?car_id=$car_id'>

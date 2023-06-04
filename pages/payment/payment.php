@@ -35,53 +35,82 @@
                 </thead>
                 <tbody>
                 <?php
-                    $cn = new mysqli (HOST, USER, PW, DB);
-                    if ($_SESSION['user_type'] == "Administrator"){
-                        $sql="SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
-                        FROM tblpayment AS payment
-                        INNER JOIN tblcustomer AS customer
-                        ON payment.customer_id = customer.customer_id";
-                    }
-                    if ($_SESSION['user_type'] == "Owner"){
-                        $owner_id = $_SESSION['user_id'];
-                        $sql="SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
-                        FROM tblpayment AS payment
-                        INNER JOIN tblcustomer AS customer
-                        ON payment.customer_id = customer.customer_id
-                        INNER JOIN tblrental AS rental
-                        ON payment.rental_id = rental.rental_id
-                        INNER JOIN tblcar AS car
-                        ON rental.car_id = car.car_id
-                        WHERE car.owner_id = $owner_id";
-                    }
-                    if ($_SESSION['user_type'] == "Customer"){
-                        $customer_id = $_SESSION['user_id'];
-                        $sql="SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
-                        FROM tblpayment AS payment
-                        INNER JOIN tblcustomer AS customer
-                        ON payment.customer_id = customer.customer_id
-                        INNER JOIN tblrental AS rental
-                        ON payment.rental_id = rental.rental_id
-                        WHERE rental.customer_id = $customer_id";
-                    }
-                    $qry=$cn->prepare($sql);
-                    $qry->execute();
-                    $qry->bind_result($payment_id, $rental_id, $payment_amount, $add_charges, $payment_date, $proof_of_payment, $customer_id, $customer_name);
-                    $qry->store_result();
-                    while ($qry->fetch()){
-                    echo "<tr>
-                        <td>$payment_amount</td>
-                        <td>$add_charges</td>
-                        <td>$payment_date</td>
-                        <td class='text-center'>
-                            <img src='../uploads/$proof_of_payment' class='img' style='width:100px;' alt='Image'><br>
-                            <button class='btn btn-sm elevation-1 btn-default btn-xs' data-toggle='modal' data-target='#view-proof_of_payment-$payment_id'><i class='nav-icon fas fa-eye'></i> View Picture</button>
-                        </td>
-                        <td>$customer_name</td>
-                        </tr>";
-                        include 'view-proof_of_payment-modal.php';
-                }
-                ?>
+                  // Parámetros de conexión a la base de datos
+                  $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+                  $user = "postgres"; // Nombre de usuario de la base de datos
+                  $password = "9090"; // Contraseña de la base de datos
+                  $dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+                  // Establecer la conexión
+                  try {
+                      $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+                      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                  } catch (PDOException $e) {
+                      echo "Error al conectar a la base de datos: " . $e->getMessage();
+                      exit;
+                  }
+
+                  if ($_SESSION['user_type'] == "Administrator") {
+                      $sql = "SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
+                              FROM tblpayment AS payment
+                              INNER JOIN tblcustomer AS customer
+                              ON payment.customer_id = customer.customer_id";
+                  } elseif ($_SESSION['user_type'] == "Owner") {
+                      $owner_id = $_SESSION['user_id'];
+                      $sql = "SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
+                              FROM tblpayment AS payment
+                              INNER JOIN tblcustomer AS customer
+                              ON payment.customer_id = customer.customer_id
+                              INNER JOIN tblrental AS rental
+                              ON payment.rental_id = rental.rental_id
+                              INNER JOIN tblcar AS car
+                              ON rental.car_id = car.car_id
+                              WHERE car.owner_id = $owner_id";
+                  } elseif ($_SESSION['user_type'] == "Customer") {
+                      $customer_id = $_SESSION['user_id'];
+                      $sql = "SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
+                              FROM tblpayment AS payment
+                              INNER JOIN tblcustomer AS customer
+                              ON payment.customer_id = customer.customer_id
+                              INNER JOIN tblrental AS rental
+                              ON payment.rental_id = rental.rental_id
+                              WHERE rental.customer_id = $customer_id";
+                  }
+
+                  try {
+                      $stmt = $conn->prepare($sql);
+                      $stmt->execute();
+                      $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                  } catch (PDOException $e) {
+                      echo "Error al ejecutar la consulta: " . $e->getMessage();
+                      exit;
+                  }
+
+                  foreach ($results as $row) {
+                      $payment_id = $row['payment_id'];
+                      $rental_id = $row['rental_id'];
+                      $payment_amount = $row['payment_amount'];
+                      $add_charges = $row['add_charges'];
+                      $payment_date = $row['payment_date'];
+                      $proof_of_payment = $row['proof_of_payment'];
+                      $customer_id = $row['customer_id'];
+                      $customer_name = $row['customer_name'];
+
+                      echo "<tr>
+                              <td>$payment_amount</td>
+                              <td>$add_charges</td>
+                              <td>$payment_date</td>
+                              <td class='text-center'>
+                                  <img src='../uploads/$proof_of_payment' class='img' style='width:100px;' alt='Image'><br>
+                                  <button class='btn btn-sm elevation-1 btn-default btn-xs' data-toggle='modal' data-target='#view-proof_of_payment-$payment_id'><i class='nav-icon fas fa-eye'></i> View Picture</button>
+                              </td>
+                              <td>$customer_name</td>
+                          </tr>";
+                      include 'view-proof_of_payment-modal.php';
+                  }
+                  ?>
+
+                
                 </tbody>
             </table>
         </div>
