@@ -4,15 +4,15 @@
           <div class="modal-content">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="profile_picture<?php echo $user_id; ?>">Choose New Profile Image for <?php echo "<b>$firstname $middlename $lastname</b>"; ?></label>
+                    <label for="profile_picture<?php echo $user_id; ?>">Selecionar nueva imagen para <?php echo "<b>$firstname $middlename $lastname</b>"; ?></label>
                     <input type="file" class="form-control form-control-border" id="profile_picture<?php echo $user_id; ?>" name="profile_picture" accept="image/*" required>
                     <input type="text" name="user_id" value="<?php echo $user_id; ?>" hidden>
                     <input type="text" name="old_profile_picture" value="<?php echo $profile_picture; ?>" hidden>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-primary" name="edit-profile_picture" value="Save">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <input type="submit" class="btn btn-primary" name="edit-profile_picture" value="Guardar">
             </div>
           </div>
             </form>
@@ -58,7 +58,7 @@ uploadField<?php echo $user_id; ?>.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'Image too large! Image must not exceed 2mb.'
+                title: 'Imagen muy grande, el máximo permitido es de 2mb.'
                 })
                 });
 

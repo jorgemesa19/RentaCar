@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cerrar</button>
               <input type="submit" class="btn btn-primary btn-flat" name="add-api" value="Save">
             </div>
           </div>

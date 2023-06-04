@@ -1,17 +1,17 @@
 <?php
 require_once '../database_config/config.php';
-$cn = new mysqli (HOST, USER, PW, DB);
-// Check connection
-if (!$cn) {
- die("Connection failed: " . mysqli_connect_error());
+$conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
+if (!$conn) {
+    die("Connection failed: " . print_r($conn->errorInfo(), true));
 }
 
-if(isset($_POST['username'])){
-    $username = mysqli_real_escape_string($cn,$_POST['username']);
+if (isset($_POST['username'])) {
+    $username = $conn->quote($_POST['username']);
 
-    $query = "SELECT COUNT(*) AS cnt_username FROM tblowner WHERE username='".$username."'";
+    $query = "SELECT COUNT(*) AS cnt_username FROM tblowner WHERE username=$username";
     
-    $result = mysqli_query($cn,$query);
+    $result = $conn->query($query);
     
     $response_username = "";
     echo "<script>
@@ -19,19 +19,18 @@ if(isset($_POST['username'])){
     document.getElementById('username').className = 'form-control form-control-border is-valid';
     </script>";
     
-    if(mysqli_num_rows($result)){
-        $row = mysqli_fetch_array($result);
+    if ($result) {
+        $row = $result->fetch(PDO::FETCH_ASSOC);
     
         $count = $row['cnt_username'];
         
-        if($count > 0){
+        if ($count > 0) {
             $response_username = "<span style='color: red;'>Already Exist</span>";
             echo "<script>
             document.getElementById('add-owner_btn').disabled = true;
             document.getElementById('username').className = 'form-control form-control-border is-invalid';
             </script>";
         }
-       
     }
     
     echo $response_username;

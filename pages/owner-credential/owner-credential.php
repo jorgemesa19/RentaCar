@@ -23,7 +23,7 @@
                               </a>";
               }
               ?>
-            <h1>Owner Credential - <b><?php echo $owner_name; ?></b></h1>
+            <h1>Credencial del propietario - <b><?php echo $owner_name; ?></b></h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -47,20 +47,21 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Credential Name</th>
-                        <th>File</th>
+                        <th>Nombre de la credencial</th>
+                        <th>Archivo</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                $cn = new mysqli (HOST, USER, PW, DB);
                 $sql="SELECT owner_credential_id, credential_name, file_upload, owner_id FROM tblownercredential WHERE owner_id = ?";
-                $qry=$cn->prepare($sql);
-                $qry->bind_param("s", $owner_id);
-                $qry->execute();
-                $qry->bind_result($owner_credential_id, $credential_name, $file_upload, $owner_id);
-                $qry->store_result();
-                while ($qry->fetch()){
+                $qry=$conn->prepare($sql);
+                $qry->execute([$owner_id]);
+                $result = $qry->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($result as $row) {
+                    $owner_credential_id = $row['owner_credential_id'];
+                    $credential_name = $row['credential_name'];
+                    $file_upload = $row['file_upload'];
+
                     $file_upload_text = substr($file_upload,0,20)."...";
                     echo "<tr>
                         <td class='text-center'>
@@ -79,7 +80,7 @@
                             <button class='btn btn-xs btn-info elevation-1'><i class='nav-icon fas fa-download'></i> Download</button>
                             </a>
                             <button class='btn elevation-1 btn-sm btn-warning btn-xs' data-toggle='modal' data-target='#edit-file_upload-$owner_credential_id'>
-                                <i class='nav-icon fas fa-pen'></i> Change FIle
+                                <i class='nav-icon fas fa-pen'></i> Change File
                             </button>
                         </td>
                         </tr>";

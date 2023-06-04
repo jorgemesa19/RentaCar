@@ -5,15 +5,15 @@
                 <div class="modal-body">
                     
                     <div class="form-group">
-                        <label for="credential_name">Credential Name</label>
+                        <label for="credential_name">Nombre de la credencial</label>
                         <input type="text" class="form-control form-control-border" id="credential_name" name="credential_name" value="<?php echo $credential_name; ?>" placeholder="Credential Name" required>
                     </div>
                     
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
                     <input type="text"  name="owner_credential_id" value="<?php echo $owner_credential_id;?>" hidden>
-                    <input type="submit" class="btn btn-primary " id="edit-ownercredential_btn" name="edit-ownercredential" value="Save">
+                    <input type="submit" class="btn btn-primary " id="edit-ownercredential_btn" name="edit-ownercredential" value="guardar">
                 </div>
             </div>
         </form>

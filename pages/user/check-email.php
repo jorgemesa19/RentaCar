@@ -1,16 +1,17 @@
 <?php
-$cn = new mysqli (HOST, USER, PW, DB);
-// Check connection
-if (!$cn) {
- die("Connection failed: " . mysqli_connect_error());
-}
+// Establecer la conexión
+$conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
 
 if(isset($_POST['email'])){
-    $email = mysqli_real_escape_string($cn,$_POST['email']);
+    $email = $_POST['email'];
 
-    $query = "SELECT COUNT(*) AS cnt_email FROM tbl_user WHERE email='".$email."'";
+    $query = "SELECT COUNT(*) AS cnt_email FROM tbl_user WHERE email=:email";
     
-    $result = mysqli_query($cn,$query);
+    $statement = $conn->prepare($query);
+    $statement->bindParam(':email', $email);
+    $statement->execute();
+    
+    $result = $statement->fetch(PDO::FETCH_ASSOC);
     
     $response = "";
     echo "<script>
@@ -18,21 +19,17 @@ if(isset($_POST['email'])){
     document.getElementById('email').className = 'form-control form-control-border is-valid';
     </script>";
     
-    if(mysqli_num_rows($result)){
-        $row = mysqli_fetch_array($result);
-    
-        $count = $row['cnt_email'];
+    $count = $result['cnt_email'];
         
-        if($count > 0){
-            $response = "<span style='color: red;'>Already Exist</span>";
-            echo "<script>
-            document.getElementById('add-user_btn').disabled = true;
-            document.getElementById('email').className = 'form-control form-control-border is-invalid';
-            </script>";
-        }
-       
+    if($count > 0){
+        $response = "<span style='color: red;'>Ya existe</span>";
+        echo "<script>
+        document.getElementById('add-user_btn').disabled = true;
+        document.getElementById('email').className = 'form-control form-control-border is-invalid';
+        </script>";
     }
-    
+   
     echo $response;
     die;
 }
+?>

@@ -1,17 +1,24 @@
-<?php 
-if(isset($_POST['add-owner'])){
-    $temp = explode(".", $_FILES["profile_image"]["name"]); 
-    $newfilename = round(microtime(true)) . '.' . end($temp);   
-    
+<?php
+require_once '../database_config/config.php';
+$conn = new PDO("pgsql:host=" . $host . ";dbname=" . $dbname, $user, $password);
+
+if (!$conn) {
+    die("Connection failed: " . print_r($conn->errorInfo(), true));
+}
+
+if (isset($_POST['add-owner'])) {
+    $temp = explode(".", $_FILES["profile_image"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($temp);
+
     $target_dir = "../uploads/";
-    
+
     $target_file = $target_dir . basename($_FILES["profile_image"]["name"]);
-    
+
     if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file . $newfilename)) {
         $filename = basename($_FILES["profile_image"]["name"]);
-        $newfilename = $filename.$newfilename;
-        
-        $owner_id= null;
+        $newfilename = $filename . $newfilename;
+
+        $owner_id = null;
         $owner_name = $_POST['owner_name'];
         $address = $_POST['address'];
         $contact = $_POST['contact'];
@@ -21,26 +28,25 @@ if(isset($_POST['add-owner'])){
         $password = $_POST['password'];
         $admin_id = $_SESSION['user_id'];
         $account_status = $_POST['account_status'];
-        
-        $cn = new mysqli (HOST, USER, PW, DB);
-        $sql="INSERT INTO tblowner VALUES (?,?,?,?,?,?,?,?,?,?)";
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("ssssssssss", $owner_id, $owner_name, $address, $contact, $profile_image, $fb_account, $username, $password, $admin_id, $account_status);
-        if ($qry->execute()){
+
+        $sql = "INSERT INTO tblowner VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $qry = $conn->prepare($sql);
+        $qry->execute([$owner_id, $owner_name, $address, $contact, $profile_image, $fb_account, $username, $password, $admin_id, $account_status]);
+
+        if ($qry->rowCount() > 0) {
             echo "<script>window.location.href = 'owner.php?status=success';</script>";
-                        
-        }
-        else {
+        } else {
             echo "<script>window.location.href = 'owner.php?status=failed';</script>";
         }
     } else {
         echo "<script>window.location.href = 'owner.php?status=failed-upload';</script>";
     }
-     
+
 }
-if(isset($_POST['edit-owner'])){
-    
-    $owner_id= $_POST['owner_id'];
+
+if (isset($_POST['edit-owner'])) {
+
+    $owner_id = $_POST['owner_id'];
     $owner_name = $_POST['owner_name'];
     $address = $_POST['address'];
     $contact = $_POST['contact'];
@@ -48,80 +54,72 @@ if(isset($_POST['edit-owner'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
     $account_status = $_POST['account_status'];
-            
-    $cn = new mysqli (HOST, USER, PW, DB);
-    $sql="UPDATE tblowner SET owner_name = ?, address = ?, contact = ?, fb_account = ?, username = ?, password = ?, account_status = ? WHERE owner_id = ?";
-    $qry=$cn->prepare($sql);
-    $qry->bind_param("ssssssss", $owner_name, $address, $contact, $fb_account, $username, $password, $account_status, $owner_id);
-    if ($qry->execute()){
-        echo "<script>window.location.href = 'owner.php?status=success';</script>";  
-    }
-    else {
+
+    $sql = "UPDATE tblowner SET owner_name = ?, address = ?, contact = ?, fb_account = ?, username = ?, password = ?, account_status = ? WHERE owner_id = ?";
+    $qry = $conn->prepare($sql);
+    $qry->execute([$owner_name, $address, $contact, $fb_account, $username, $password, $account_status, $owner_id]);
+
+    if ($qry->rowCount() > 0) {
+        echo "<script>window.location.href = 'owner.php?status=success';</script>";
+    } else {
         echo "<script>window.location.href = 'owner.php?status=failed';</script>";
     }
 }
-if(isset($_POST['delete-owner'])){
-    
-    $owner_id= $_POST['owner_id'];
-         
-        $cn = new mysqli (HOST, USER, PW, DB);
-        $sql="DELETE FROM tblowner WHERE owner_id=?";
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("s", $owner_id);
-        if ($qry->execute()){
-            $old_profile_image = $_POST ['old_profile_image'];
-                if ($old_profile_image != 'img-default.jpg'){
-                    //delete old profile_image
-                    unlink("../uploads/$old_profile_image");
-                }
-            
-            $cn = new mysqli (HOST, USER, PW, DB);
-            $sql="DELETE FROM tblownercredential WHERE owner_id=?";
-            $qry=$cn->prepare($sql);
-            $qry->bind_param("s", $owner_id);
-            $qry->execute();
-            
-            echo "<script>window.location.href = 'owner.php?status=success';</script>";
-            
+
+if (isset($_POST['delete-owner'])) {
+
+    $owner_id = $_POST['owner_id'];
+
+    $sql = "DELETE FROM tblowner WHERE owner_id=?";
+    $qry = $conn->prepare($sql);
+    $qry->execute([$owner_id]);
+
+    if ($qry->rowCount() > 0) {
+        $old_profile_image = $_POST['old_profile_image'];
+        if ($old_profile_image != 'img-default.jpg') {
+            //delete old profile_image
+            unlink("../uploads/$old_profile_image");
         }
-        else {
-            echo "<script>window.location.href = 'owner.php?status=failed';</script>";
-        } 
-    
-    
+
+        $sql = "DELETE FROM tblownercredential WHERE owner_id=?";
+        $qry = $conn->prepare($sql);
+        $qry->execute([$owner_id]);
+
+        echo "<script>window.location.href = 'owner.php?status=success';</script>";
+    } else {
+        echo "<script>window.location.href = 'owner.php?status=failed';</script>";
+    }
 }
 
-if(isset($_POST['edit-profile_image'])){
-    $temp = explode(".", $_FILES["profile_image"]["name"]); 
-    $newfilename = round(microtime(true)) . '.' . end($temp);   
-    
+if (isset($_POST['edit-profile_image'])) {
+    $temp = explode(".", $_FILES["profile_image"]["name"]);
+    $newfilename = round(microtime(true)) . '.' . end($temp);
+
     $target_dir = "../uploads/";
-    
+
     $target_file = $target_dir . basename($_FILES["profile_image"]["name"]);
-    
+
     if (move_uploaded_file($_FILES["profile_image"]["tmp_name"], $target_file . $newfilename)) {
         $filename = basename($_FILES["profile_image"]["name"]);
-        $newfilename = $filename.$newfilename;
-        
-        $owner_id= $_POST['owner_id'];
-        $profile_image= $newfilename;
-        $old_profile_image= $_POST['old_profile_image'];
+        $newfilename = $filename . $newfilename;
 
-            
-        $cn = new mysqli (HOST, USER, PW, DB);
-        $sql="UPDATE tblowner SET profile_image = ? WHERE owner_id = ?";
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("ss", $profile_image, $owner_id);
-        if ($qry->execute()){
+        $owner_id = $_POST['owner_id'];
+        $profile_image = $newfilename;
+        $old_profile_image = $_POST['old_profile_image'];
+
+        $sql = "UPDATE tblowner SET profile_image = ? WHERE owner_id = ?";
+        $qry = $conn->prepare($sql);
+        $qry->execute([$profile_image, $owner_id]);
+
+        if ($qry->rowCount() > 0) {
             echo "<script>window.location.href = 'owner.php?status=success';</script>";
-            
-                $old_profile_image = $_POST ['old_profile_image'];
-                if ($old_profile_image != 'img-default.jpg'){
-                    //delete old profile_image
-                    unlink("../uploads/$old_profile_image");
-                }
-        }
-        else {
+
+            $old_profile_image = $_POST['old_profile_image'];
+            if ($old_profile_image != 'img-default.jpg') {
+                //delete old profile_image
+                unlink("../uploads/$old_profile_image");
+            }
+        } else {
             echo "<script>window.location.href = 'owner.php?status=failed';</script>";
         }
     }

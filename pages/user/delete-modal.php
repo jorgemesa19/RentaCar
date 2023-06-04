@@ -4,11 +4,11 @@
           <div class="modal-content ">
             <div class="modal-body">
                 <input type="text" class="form-control" name="brgy_id" value="<?php echo $brgy_id ?>" hidden>
-                <?php echo "Are you sure you want to delete <b>$brgy_name<b>?" ?>
+                <?php echo "¿Estás seguro de borrar <b>$brgy_name<b>?" ?>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-danger btn-flat" name="delete-brgy" value="Delete">
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cerrar</button>
+              <input type="submit" class="btn btn-danger btn-flat" name="delete-brgy" value="Eliminar">
             </div>
           </div>
             </form>
