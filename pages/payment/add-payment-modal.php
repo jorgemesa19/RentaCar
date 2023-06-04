@@ -1,3 +1,15 @@
+<?php
+// Parámetros de conexión a la base de datos
+$host = "locahost"; // Nombre del servidor donde está alojada la base de datos
+$user = "postgres"; // Nombre de usuario de la base de datos
+$password = "9090"; // Contraseña de la base de datos
+$dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+// Establecer la conexión
+$conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
+?>
+
 <div class="modal fade" id="add-payment">
     <div class="modal-dialog modal-md">
         <form method="post" class="form-horizontal" enctype="multipart/form-data">
@@ -26,7 +38,7 @@
                     
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
                     <input type="text" name="rental_id" value="<?php echo $rental_id;?>" hidden>
                     <input type="text" name="customer_id" value="<?php echo $customer_id;?>" hidden>
                     <input type="submit" class="btn btn-primary " id="add-payment_btn" name="add-payment" value="Save">
@@ -37,4 +49,3 @@
     </div>
     <!-- /.modal-dialog -->
 </div>
-<!-- /.modal -->
