@@ -45,7 +45,7 @@
             if (!$result) {
                 echo "
                 <button class='btn btn-info' data-toggle='modal' data-target='#add-payment'>
-                    <i class='nav-icon fas fa-plus'></i> Add Payment
+                    <i class='nav-icon fas fa-plus'></i> Añadir pago
                 </button>
                ";
             }
@@ -102,7 +102,7 @@
                             <td>$payment_date</td>
                             <td class='text-center'>
                                 <img src='../uploads/$proof_of_payment' class='img' style='width:100px;' alt='Image'><br>
-                                <button class='btn btn-sm elevation-1 btn-default btn-xs' data-toggle='modal' data-target='#view-proof_of_payment-$payment_id'><i class='nav-icon fas fa-eye'></i> View Picture</button>
+                                <button class='btn btn-sm elevation-1 btn-default btn-xs' data-toggle='modal' data-target='#view-proof_of_payment-$payment_id'><i class='nav-icon fas fa-eye'></i> Ver imagen</button>
                             </td>
                             <td>$customer_name</td>
                             </tr>";

@@ -19,7 +19,7 @@
                   $customer_name = $_GET['customer_name'];
                   
                 $back_btn = "<a href='../customer/customer.php'>
-                                <button class='btn btn-default'>Go Back</button>
+                                <button class='btn btn-default'>Volver</button>
                               </a>";
               }
               ?>
@@ -40,15 +40,15 @@
       <div class="card">
         <div class="card-header">
             <?php echo $back_btn; ?>
-            <button class="btn btn-info" data-toggle="modal" data-target="#add-customercredential"><i class="fa fa-plus"></i> Add</button>
+            <button class="btn btn-info" data-toggle="modal" data-target="#add-customercredential"><i class="fa fa-plus"></i> Añadir</button>
         </div>
         <div class="card-body">
             <table id="table1" class="table table-hover table-sm">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Credential Name</th>
-                        <th>File</th>
+                        <th>Nombre de la credencial</th>
+                        <th>Archivo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -95,7 +95,7 @@
                         
                             $file_upload_text
                             <a href='../uploads/$file_upload' target='_blank'>
-                            <button class='btn btn-xs btn-info elevation-1'><i class='nav-icon fas fa-download'></i> Download</button>
+                            <button class='btn btn-xs btn-info elevation-1'><i class='nav-icon fas fa-download'></i> Descargar</button>
                             </a>
                             <button class='btn elevation-1 btn-sm btn-warning btn-xs' data-toggle='modal' data-target='#edit-file_upload-$credential_id'>
                                 <i class='nav-icon fas fa-pen'></i> Change FIle

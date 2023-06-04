@@ -17,22 +17,22 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                 <div class="modal-body">
                     
                     <div class="form-group">
-                        <label for="payment_amount">Payment Amount</label>
-                        <input type="number" class="form-control form-control-border" id="payment_amount" name="payment_amount" placeholder="Payment Amount" required>
+                        <label for="payment_amount">Monto de pago</label>
+                        <input type="number" class="form-control form-control-border" id="payment_amount" name="payment_amount" placeholder="Monto de pago" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="add_charges">Add Charges</label>
-                        <input type="number" class="form-control form-control-border" id="add_charges" name="add_charges" placeholder="Add Charges" required>
+                        <label for="add_charges">Agregar cargos</label>
+                        <input type="number" class="form-control form-control-border" id="add_charges" name="add_charges" placeholder="Agregar cargos" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="payment_date">Payment Date</label>
+                        <label for="payment_date">Fecha de pago</label>
                         <input type="date" class="form-control form-control-border" id="payment_date" name="payment_date" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="proof_of_payment">Proof of Payment</label>
+                        <label for="proof_of_payment">Prueba de pago</label>
                         <input type="file" class="form-control form-control-border" id="proof_of_payment" name="proof_of_payment" accept="image/*" required>
                     </div>
                     

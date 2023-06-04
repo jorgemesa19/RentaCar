@@ -5,18 +5,18 @@
                 <div class="modal-body">
                     
                     <div class="form-group">
-                        <label for="credential_name">Credential Name</label>
-                        <input type="text" class="form-control form-control-border" id="credential_name" name="credential_name" placeholder="Credential Name" required>
+                        <label for="credential_name">Nombre de la credencial</label>
+                        <input type="text" class="form-control form-control-border" id="credential_name" name="credential_name" placeholder="Nombre de la credencial" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="file_upload">File Upload</label>
+                        <label for="file_upload">Subir archivo</label>
                         <input type="file" class="form-control form-control-border" id="file_upload" name="file_upload" required>
                     </div>
                                 
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
                     <input type="submit" class="btn btn-primary " id="add-customercredential_btn" name="add-customercredential" value="Save">
                 </div>
             </div>

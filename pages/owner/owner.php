@@ -26,7 +26,7 @@
         include 'function.php'; 
         $add_btn = "";
         if ($_SESSION['user_type'] == "Administrator"){
-            $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-owner'><i class='fa fa-plus'></i> Add</button>";
+            $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-owner'><i class='fa fa-plus'></i> Añadir</button>";
         }
         ?>
       <!-- Default box -->

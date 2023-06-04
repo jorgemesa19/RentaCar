@@ -4,14 +4,14 @@
           <div class="modal-content">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="logo">Choose New Logo</label>
+                    <label for="logo">Elegir nuevo logo</label>
                     <input type="file" class="form-control form-control-border" id="logo" name="logo" accept="image/*" required>
                     <input type="text" name="setting_id" value="<?php echo $setting_id;?>" hidden>
                     <input type="text" name="old_logo" value="<?php echo $logo; ?>" hidden>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cerrar</button>
               <input type="submit" class="btn btn-primary btn-flat" name="edit-logo" value="Save">
             </div>
           </div>

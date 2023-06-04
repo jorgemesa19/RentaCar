@@ -34,7 +34,7 @@
         <?php include "function.php";?>
       <form method="post">
         <div class="input-group mb-3">
-          <input type="name" class="form-control form-control-border" name="username" placeholder="Username" required>
+          <input type="name" class="form-control form-control-border" name="username" placeholder="Nombre de usuario" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-user"></span>
@@ -42,7 +42,7 @@
           </div>
         </div>
         <div class="input-group mb-3">
-          <input type="password" class="form-control form-control-border" name="password" placeholder="Password" required>
+          <input type="password" class="form-control form-control-border" name="password" placeholder="Contraseña" required>
           <div class="input-group-append">
             <div class="input-group-text">
               <span class="fas fa-lock"></span>
@@ -52,7 +52,7 @@
         <div class="row">
           <!-- /.col -->
           <div class="col-6">
-            <input type="submit" class="btn btn-primary btn-block" name="sign-in" value="Sign In">
+            <input type="submit" class="btn btn-primary btn-block" name="sign-in" value="Iniciar Sesión">
           </div>
           <!-- /.col -->
         </div>

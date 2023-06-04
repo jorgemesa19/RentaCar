@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Car Images <b><?php echo $_GET['car_name'];?></b></h1>
+            <h1>Imagenes del carro <b><?php echo $_GET['car_name'];?></b></h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -56,7 +56,7 @@
         }
 
         if ($_SESSION['user_type'] == "Administrator" || $_SESSION['user_type'] == "Owner"){
-            $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-carimage'><i class='fa fa-plus'></i> Add</button>";
+            $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-carimage'><i class='fa fa-plus'></i> Añadir</button>";
         } else {
             $add_btn = "";
         }
@@ -65,7 +65,7 @@
       <div class="card">
         <div class="card-header">
             <a href="../car/car.php">
-                <button class="btn btn-default">Go back</button>
+                <button class="btn btn-default">Volver</button>
             </a>
             <?php echo $add_btn;?>
         </div>

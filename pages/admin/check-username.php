@@ -26,7 +26,7 @@ try {
         </script>";
 
         if ($count > 0) {
-            $response_username = "<span style='color: red;'>Already Exist</span>";
+            $response_username = "<span style='color: red;'>Ya existe</span>";
             echo "<script>
             document.getElementById('add-admin_btn').disabled = true;
             document.getElementById('username').className = 'form-control form-control-border is-invalid';

@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit Car Review <b><?php echo $_GET['car_name'];?></b></h1>
+            <h1>Editar revision del carro <b><?php echo $_GET['car_name'];?></b></h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -58,17 +58,17 @@
           <form method="post">
               <div class="card-body">
             <div class="form-group">
-                <label for="review">Review</label>
-                <textarea class="form-control form-control-border" rows="3" id="review" name="review" placeholder="Review" required><?php echo $review;?></textarea>
+                <label for="review">Revisión</label>
+                <textarea class="form-control form-control-border" rows="3" id="review" name="review" placeholder="Revision" required><?php echo $review;?></textarea>
             </div>
                     
             <div class="form-group">
-                <label for="review_score">Review Score</label>
-                <input type="number" class="form-control form-control-border" id="review_score" name="review_score" value="<?php echo $review_score; ?>" placeholder="Review Score" required>
+                <label for="review_score">Puntaje de revisión</label>
+                <input type="number" class="form-control form-control-border" id="review_score" name="review_score" value="<?php echo $review_score; ?>" placeholder="Puntaje de la revisión" required>
             </div>
                     
             <div class="form-group">
-                <label for="customer_id">Customer</label>
+                <label for="customer_id">Cliente</label>
                 <select class='custom-select form-control-border' name="customer_id">
                     <?php
                     echo " <option value='$customer_id'>$customer_name</option>";
@@ -88,7 +88,7 @@
         </div>
               <div class="card-footer justify-content-between">
               <a onclick="history.back()">
-                  <button type="button" class="btn btn-default">Go back</button>
+                  <button type="button" class="btn btn-default">Volver</button>
               </a>
               <input type="text" name="review_id" value="<?php echo $review_id;?>" hidden>
               <input type="submit" class="btn btn-primary " id="edit-carreview_btn" name="edit-carreview" value="Save">

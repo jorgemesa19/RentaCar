@@ -58,7 +58,7 @@ $(function () {
             $(document).ready(function(){
             Toast.fire({
             icon: 'success',
-            title: 'Saved!'
+            title: 'Guardado!'
             })
             });
 
@@ -80,7 +80,7 @@ $(function () {
             $(document).ready(function(){
             Toast.fire({
             icon: 'error',
-            title: 'There was a problem!'
+            title: 'Hya un problema!'
             })
             });
 
@@ -102,7 +102,7 @@ $(function () {
             $(document).ready(function(){
             Toast.fire({
             icon: 'error',
-            title: 'There was a problem uploading the file!'
+            title: 'Hay un problema con el archivo!'
             })
             });
 

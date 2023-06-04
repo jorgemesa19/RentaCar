@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit Car</h1>
+            <h1>Editar carro</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -43,23 +43,23 @@
             ?>
             
             <div class="form-group">
-                <label for="car_name">Car Name</label>
-                <input type="text" class="form-control form-control-border" id="car_name" name="car_name" value="<?php echo $car_name;?>" placeholder="Car Name" required>
+                <label for="car_name">Nombre del carro</label>
+                <input type="text" class="form-control form-control-border" id="car_name" name="car_name" value="<?php echo $car_name;?>" placeholder="Nombre del carro" required>
             </div>
                     
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class="form-control form-control-border" rows="3" id="description" name="description" value="" placeholder="Description" required><?php echo $description;?></textarea>
+                <label for="description">Descripción</label>
+                <textarea class="form-control form-control-border" rows="3" id="description" name="description" value="" placeholder="Descripción" required><?php echo $description;?></textarea>
             </div>
                     
             <div class="form-group">
-                <label for="car_model_year">Model Year</label>
-                <input type="text" class="form-control form-control-border" id="car_model_year" name="car_model_year" value="<?php echo $car_model_year;?>" placeholder="Model Year" required>
+                <label for="car_model_year"> Año del vehiculo</label>
+                <input type="text" class="form-control form-control-border" id="car_model_year" name="car_model_year" value="<?php echo $car_model_year;?>" placeholder="Modelo" required>
             </div>
                     
             <div class="form-group">
-                <label for="car_brand">Brand</label>
-                <input type="text" class="form-control form-control-border" id="car_brand" name="car_brand" value="<?php echo $car_brand;?>" placeholder="Brand" required>
+                <label for="car_brand">Marca</label>
+                <input type="text" class="form-control form-control-border" id="car_brand" name="car_brand" value="<?php echo $car_brand;?>" placeholder="Marca" required>
             </div>
                        
             <div class="form-group">
@@ -68,22 +68,22 @@
             </div>
                     
             <div class="form-group">
-                <label for="capacity">Capacity</label>
-                <input type="text" class="form-control form-control-border" id="capacity" name="capacity" value="<?php echo $capacity;?>" placeholder="Capacity" required>
+                <label for="capacity">Capacidad</label>
+                <input type="text" class="form-control form-control-border" id="capacity" name="capacity" value="<?php echo $capacity;?>" placeholder="Capacidad" required>
             </div>
                     
             <div class="form-group">
-                <label for="plate_number">Plate Number</label>
-                <input type="text" class="form-control form-control-border" id="plate_number" name="plate_number" value="<?php echo $plate_number;?>" placeholder="Plate Number" required>
+                <label for="plate_number">Placa del vehiculo</label>
+                <input type="text" class="form-control form-control-border" id="plate_number" name="plate_number" value="<?php echo $plate_number;?>" placeholder="Número de placa" required>
             </div>
                     
             <div class="form-group">
-                <label for="rate">Rate</label>
-                <input type="text" class="form-control form-control-border" id="rate" name="rate" value="<?php echo $rate;?>" placeholder="Rate" required>
+                <label for="rate">Calificacion</label>
+                <input type="text" class="form-control form-control-border" id="rate" name="rate" value="<?php echo $rate;?>" placeholder="Calificacion" required>
             </div>
                     
             <div class="form-group">
-                <label for="owner_id">Owner</label>
+                <label for="owner_id">Dueño</label>
                 <select class='custom-select form-control-border' name="owner_id">
                     <?php
                     $stmt = $conn->prepare("SELECT owner_id, owner_name FROM tblowner WHERE owner_id = ?");
@@ -102,16 +102,16 @@
             </div>
                     
             <div class="form-group">
-                <label for="status">Status</label>
+                <label for="status">Estado</label>
                 <select class='custom-select form-control-border' name="status">
                     <?php
                     if ($status == 1){
-                        echo "<option value='1'>Available</option>
-                        <option value='0'>Not Available</option>";
+                        echo "<option value='1'>Disponible</option>
+                        <option value='0'>No disponible</option>";
                     } else {
                         echo "
-                        <option value='0'>Not Available</option>
-                        <option value='1'>Available</option>";
+                        <option value='0'>No disponible</option>
+                        <option value='1'>DIsponible</option>";
                     }
                     ?>
                     
@@ -119,7 +119,7 @@
             </div>
         </div>
               <div class="card-footer justify-content-between">
-                  <a href="car.php"><button type="button" class="btn btn-default">Close</button></a>
+                  <a href="car.php"><button type="button" class="btn btn-default">Cerrar</button></a>
                     <input type="text" name="car_id" value="<?php echo $car_id;?>" hidden>
                     <input type="submit" class="btn btn-primary " id="edit-car_btn" name="edit-car" value="Save">
                 </div>

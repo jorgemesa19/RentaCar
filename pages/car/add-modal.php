@@ -17,23 +17,23 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="car_name">Car Name</label>
-                        <input type="text" class="form-control form-control-border" id="car_name" name="car_name" placeholder="Car Name" required>
+                        <label for="car_name">Nombre del carro</label>
+                        <input type="text" class="form-control form-control-border" id="car_name" name="car_name" placeholder="Nombre del carro" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="description">Description</label>
-                        <textarea class="form-control form-control-border" rows="3" id="description" name="description" placeholder="Description" required></textarea>
+                        <label for="description">Descripción</label>
+                        <textarea class="form-control form-control-border" rows="3" id="description" name="description" placeholder="Descripción" required></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="car_model_year">Model Year</label>
-                        <input type="text" class="form-control form-control-border" id="car_model_year" name="car_model_year" placeholder="Model Year" required>
+                        <label for="car_model_year">Año del modelo</label>
+                        <input type="text" class="form-control form-control-border" id="car_model_year" name="car_model_year" placeholder="Modelo del carro" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="car_brand">Brand</label>
-                        <input type="text" class="form-control form-control-border" id="car_brand" name="car_brand" placeholder="Brand" required>
+                        <label for="car_brand">Marca</label>
+                        <input type="text" class="form-control form-control-border" id="car_brand" name="car_brand" placeholder="Marca" required>
                     </div>
 
                     <div class="form-group">
@@ -42,22 +42,22 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                     </div>
 
                     <div class="form-group">
-                        <label for="capacity">Capacity</label>
-                        <input type="text" class="form-control form-control-border" id="capacity" name="capacity" placeholder="Capacity" required>
+                        <label for="capacity">Capacidad</label>
+                        <input type="text" class="form-control form-control-border" id="capacity" name="capacity" placeholder="Capacidad" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="plate_number">Plate Number</label>
-                        <input type="text" class="form-control form-control-border" id="plate_number" name="plate_number" placeholder="Plate Number" required>
+                        <label for="plate_number">Placa del vehiculo</label>
+                        <input type="text" class="form-control form-control-border" id="plate_number" name="plate_number" placeholder="Placa del vehiculo" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="rate">Rate</label>
-                        <input type="text" class="form-control form-control-border" id="rate" name="rate" placeholder="Rate" required>
+                        <label for="rate">Calificación</label>
+                        <input type="text" class="form-control form-control-border" id="rate" name="rate" placeholder="Calificación" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="owner_id">Owner</label>
+                        <label for="owner_id">Dueño</label>
                         <select class='custom-select form-control-border' name="owner_id">
                             <?php
                             $sql = "";
@@ -82,21 +82,21 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                     </div>
 
                     <div class="form-group">
-                        <label for="status">Status</label>
+                        <label for="status">Estado</label>
                         <select class='custom-select form-control-border' name="status">
-                            <option value='1'>Available</option>
-                            <option value='0'>Not Available</option>
+                            <option value='1'>Disponible</option>
+                            <option value='0'>No disponible</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="proof_of_ownership">Proof of Ownership</label>
+                        <label for="proof_of_ownership">Prueba de propiedad</label>
                         <input type="file" class="form-control form-control-border" id="proof_of_ownership" name="proof_of_ownership" accept="image/*" required>
                     </div>
 
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                     <input type="submit" class="btn btn-primary" id="add-car_btn" name="add-car" value="Save">
                 </div>
             </div>

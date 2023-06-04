@@ -6,7 +6,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-          <a href='../dashboard/dashboard.php' class='nav-link'><p style='font-size:20px;'>Car Rental System</p></a>
+          <a href='../dashboard/dashboard.php' class='nav-link'><p style='font-size:20px;'>SISTEMA DE RENTA DE CARROS</p></a>
       </li>
     </ul>
 
@@ -26,7 +26,7 @@
 
                 <ul class="list-group list-group-unbordered mb-3">
                 </ul>
-                <a href="../login/login.php" class="btn btn-sm btn-primary btn-block"><b>Logout</b></a>
+                <a href="../login/login.php" class="btn btn-sm btn-primary btn-block"><b>Cerrar Sesión</b></a>
               </div>
         </div>
       </li>
@@ -44,7 +44,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-1">
     <!-- Brand Logo -->
     <a href="#" class="brand-link text-center">
-       Car Rental System
+       Sistema de renta de carros
     </a>
 
     <!-- Sidebar -->

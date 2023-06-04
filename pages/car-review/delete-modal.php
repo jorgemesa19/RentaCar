@@ -4,10 +4,10 @@
           <div class="modal-content ">
             <div class="modal-body">
                 <input type="text" class="form-control" name="review_id" value="<?php echo $review_id ?>" hidden>
-                Are you sure you want to delete?
+                Estas seguro de eliminar?
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               <input type="submit" class="btn btn-danger" name="delete-carreview" value="Delete">
             </div>
           </div>

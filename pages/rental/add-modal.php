@@ -5,22 +5,22 @@
                 <div class="modal-body">
                     
                     <div class="form-group">
-                        <label for="rental_date">Rental Date</label>
+                        <label for="rental_date">Fecha de renta</label>
                         <input type="date" class="form-control form-control-border" id="rental_date" name="rental_date" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="rental_time">Rental Time</label>
+                        <label for="rental_time">Tiempo de renta</label>
                         <input type="time" class="form-control form-control-border" id="rental_time" name="rental_time" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="return_date">Return Date</label>
+                        <label for="return_date">Fecha de devolución</label>
                         <input type="date" class="form-control form-control-border" id="return_date" name="return_date" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="car_id">Car</label>
+                        <label for="car_id">Carro</label>
                         <select class='custom-select form-control-border' name="car_id">
                             <?php
                             $host = "localhost";
@@ -41,7 +41,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="customer_id">Customer</label>
+                        <label for="customer_id">Cliente</label>
                         <select class='custom-select form-control-border' name="customer_id">
                             <?php
                             if ($_SESSION['user_type'] == "Administrator") {
@@ -62,16 +62,16 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="rental_status">Rental Status</label>
+                        <label for="rental_status">Estado de renta</label>
                         <select class='custom-select form-control-border' name="rental_status">
-                            <option value='1'>Available</option>
-                            <option value='0'>Unavailable</option>
+                            <option value='1'>Disponible</option>
+                            <option value='0'>No disponible</option>
                         </select>
                     </div>
                     
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
                     <input type="submit" class="btn btn-primary " id="add-rental_btn" name="add-rental" value="Save">
                 </div>
             </div>

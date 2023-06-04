@@ -5,7 +5,7 @@
                 <img src='../uploads/<?php echo $proof_of_ownership;?>' class='img' style='width:100%;' alt='Image'>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
             </div>
           </div>
           <!-- /.modal-content -->

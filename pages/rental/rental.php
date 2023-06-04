@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Rental</h1>
+            <h1>Rentas</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -24,7 +24,7 @@
         include 'add-modal.php';
         include 'function.php'; 
         
-        $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-rental'><i class='fa fa-plus'></i> Add</button>";
+        $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-rental'><i class='fa fa-plus'></i> Añadir</button>";
         if ($_SESSION['user_type'] == "Owner"){
             $add_btn = "";
         }
@@ -40,13 +40,13 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Rental Date</th>
-                        <th>Rental Time</th>
-                        <th>Return Date</th>
-                        <th>Owner</th>
-                        <th>Car</th>
-                        <th>Customer</th>
-                        <th>Status</th>
+                        <th>Fecha de renta</th>
+                        <th>Tiempo de renta</th>
+                        <th>Fecha de devolución</th>
+                        <th>Dueño</th>
+                        <th>Carro</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -111,13 +111,13 @@
                     $customer_name = $row['customer_name'];
                     
                     $delete_btn = "<button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-rental-$rental_id'>
-                                    <i class='nav-icon fas fa-trash'></i> Delete
+                                    <i class='nav-icon fas fa-trash'></i> Eliminar
                                     </button>";
                     if ($_SESSION['user_type'] == "Administrator"){
                         $add_payment_btn = "
                         <a href='../payment/add-payment.php?rental_id=$rental_id&customer_id=$customer_id'>
                             <button class='btn elevation-1 btn-sm btn-default btn-xs'>
-                                <i class='nav-icon fas fa-plus'></i> Add Payment
+                                <i class='nav-icon fas fa-plus'></i> Añadir pago
                             </button>
                         </a>";
                     }
@@ -128,15 +128,15 @@
                         $add_payment_btn = "
                         <a href='../payment/add-payment.php?rental_id=$rental_id&customer_id=$customer_id'>
                             <button class='btn elevation-1 btn-sm btn-default btn-xs'>
-                                <i class='nav-icon fas fa-plus'></i> Add Payment
+                                <i class='nav-icon fas fa-plus'></i> Añadir pago
                             </button>
                         </a>";
                     }
                     
                     if ($rental_status == 1){
-                        $status_text = "<span class='badge badge-success'>Available</span>";
+                        $status_text = "<span class='badge badge-success'>Disponible</span>";
                     } else {
-                        $status_text = "<span class='badge badge-warning'>Unavailable</span>";
+                        $status_text = "<span class='badge badge-warning'>No disponible</span>";
                     }
                     echo "<tr>
                         <td class='text-center'>

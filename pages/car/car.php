@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Cars</h1>
+            <h1>Carros</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -40,17 +40,17 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Car Name</th>
-                        <th>Description</th>
-                        <th>Model Year</th>
-                        <th>Brand</th>
+                        <th>Nombre del carro</th>
+                        <th>Descripción</th>
+                        <th>Año del modelo</th>
+                        <th>Marca</th>
                         <th>Color</th>
-                        <th>Capacity</th>
-                        <th>Plate Number</th>
-                        <th>Rate</th>
-                        <th>Owner</th>
-                        <th>Status</th>
-                        <th>Proof of Ownership</th>
+                        <th>Capacidad</th>
+                        <th>Numero de placa</th>
+                        <th>Calificación</th>
+                        <th>Dueño</th>
+                        <th>Estado</th>
+                        <th>Prueba de propiedad</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -105,11 +105,11 @@
                          $action_btns = "
                             <a href='edit-car.php?car_id=$car_id'>
                                     <button class='btn elevation-1 btn-success btn-xs'>
-                                        <i class='nav-icon fas fa-pen'></i> Edit
+                                        <i class='nav-icon fas fa-pen'></i> Editar
                                     </button> 
                                 </a>
                                 <button class='btn elevation-1 btn-danger btn-xs' data-toggle='modal' data-target='#delete-car-$car_id'>
-                                <i class='nav-icon fas fa-trash'></i> Delete
+                                <i class='nav-icon fas fa-trash'></i> Eliminar
                             </button>";
                         
                     }
@@ -117,11 +117,11 @@
                         $action_btns = "
                             <a href='edit-car.php?car_id=$car_id'>
                                     <button class='btn elevation-1 btn-success btn-xs'>
-                                        <i class='nav-icon fas fa-pen'></i> Edit
+                                        <i class='nav-icon fas fa-pen'></i> Editar
                                     </button> 
                                 </a>
                                 <button class='btn elevation-1 btn-danger btn-xs' data-toggle='modal' data-target='#delete-car-$car_id'>
-                                <i class='nav-icon fas fa-trash'></i> Delete
+                                <i class='nav-icon fas fa-trash'></i> Eliminar
                             </button>";
                     }
                     if ($_SESSION['user_type'] == "Customer"){
@@ -129,21 +129,21 @@
                     }
     
                     if ($status == 1){
-                        $status_text = "<span class='badge badge-success'>Available</span>";
+                        $status_text = "<span class='badge badge-success'>Disponible</span>";
                     } else {
-                        $status_text = "<span class='badge badge-warning'>Unavailable</span>";
+                        $status_text = "<span class='badge badge-warning'>No disponible</span>";
                     }
                     echo "<tr>
                         <td class='text-center'>
                         $action_btns
                         <a href='../car-image/car-image.php?car_id=$car_id&car_name=$car_name'>
                             <button class='btn elevation-1 btn-default btn-xs'>
-                                <i class='nav-icon fas fa-eye'></i> Images
+                                <i class='nav-icon fas fa-eye'></i> Imagenes
                             </button> 
                         </a>
                         <a href='../car-review/car-review.php?car_id=$car_id&car_name=$car_name'>
                             <button class='btn elevation-1 btn-default btn-xs'>
-                                <i class='nav-icon fas fa-eye'></i> Reviews
+                                <i class='nav-icon fas fa-eye'></i> Revisiones
                             </button> 
                         </a>
                         </td>
@@ -159,8 +159,8 @@
                         <td>$status_text</td>
                         <td class='text-center'>
                             <img src='../uploads/$proof_of_ownership' class='img' style='width:100px;' alt='Image'><br>
-                            <button class='btn btn-sm elevation-1 btn-default btn-xs' data-toggle='modal' data-target='#view-proof_of_ownership-$car_id'><i class='nav-icon fas fa-eye'></i> View Picture</button>
-                            <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-proof_of_ownership-$car_id'><i class='nav-icon fas fa-pen'></i> Edit Picture</button>
+                            <button class='btn btn-sm elevation-1 btn-default btn-xs' data-toggle='modal' data-target='#view-proof_of_ownership-$car_id'><i class='nav-icon fas fa-eye'></i> Ver imagen</button>
+                            <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-proof_of_ownership-$car_id'><i class='nav-icon fas fa-pen'></i> Editar imagen</button>
                         </td>
                         </tr>";
                     

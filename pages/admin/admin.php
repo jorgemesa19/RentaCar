@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Administrator</h1>
+            <h1>Administrador</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -28,18 +28,18 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <button class="btn btn-info" data-toggle="modal" data-target="#add-admin"><i class="fa fa-plus"></i> Add</button>
+          <button class="btn btn-info" data-toggle="modal" data-target="#add-admin"><i class="fa fa-plus"></i> Añadir</button>
         </div>
         <div class="card-body">
             <table id="table1" class="table table-hover table-sm">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Name</th>
-                        <th>Contact Number</th>
-                        <th>Address</th>
-                        <th>Username</th>
-                        <th>Password</th>
+                        <th>Nombre</th>
+                        <th>Numero de contacto</th>
+                        <th>Dirección</th>
+                        <th>Nombre de usuario</th>
+                        <th>Contraseña</th>
                     </tr>
                 </thead>
                 <tbody>

@@ -5,10 +5,10 @@
             <div class="modal-body">
                 <input type="text" class="form-control" name="image_id" value="<?php echo $image_id ?>" hidden>
                 <input type="text" class="form-control" name="old_image" value="<?php echo $image ?>" hidden>
-                Are you sure you want to delete?
+                Estas seguro de eliminar?
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               <input type="submit" class="btn btn-danger" name="delete-carimage" value="Delete">
             </div>
           </div>

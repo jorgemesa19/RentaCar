@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Dashboard</h1>
+            <h1>Panel administrativo</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -43,7 +43,7 @@
                             echo "Error al conectar a la base de datos.";
                         }
                         ?>
-                        <p>No. of Cars</p>
+                        <p>No. de Cars</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-car"></i>
@@ -64,7 +64,7 @@
                             echo "Error al conectar a la base de datos.";
                         }
                         ?>
-                        <p>No. of Owners</p>
+                        <p>N. de dueños</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-contacts"></i>
@@ -85,7 +85,7 @@
                             echo "Error al conectar a la base de datos.";
                         }
                         ?>
-                        <p>No. of Customers</p>
+                        <p>No. de clientes</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-contacts"></i>

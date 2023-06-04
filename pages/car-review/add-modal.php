@@ -5,17 +5,17 @@
                 <div class="modal-body">
 
                     <div class="form-group">
-                        <label for="review">Review</label>
-                        <textarea class="form-control form-control-border" rows="3" id="review" name="review" placeholder="Review" required></textarea>
+                        <label for="review">Revisión</label>
+                        <textarea class="form-control form-control-border" rows="3" id="review" name="review" placeholder="Revisión" required></textarea>
                     </div>
 
                     <div class="form-group">
-                        <label for="review_score">Review Score</label>
-                        <input type="number" class="form-control form-control-border" id="review_score" name="review_score" placeholder="Review Score" required>
+                        <label for="review_score">Puntaje de la revisión</label>
+                        <input type="number" class="form-control form-control-border" id="review_score" name="review_score" placeholder="Puntaje de la revisión" required>
                     </div>
 
                     <div class="form-group">
-                        <label for="customer_id">Customer</label>
+                        <label for="customer_id">Cliente</label>
                         <select class='custom-select form-control-border' name="customer_id">
                             <?php
                             $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
@@ -48,7 +48,7 @@
 
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
                     <input type="submit" class="btn btn-primary " id="add-carreview_btn" name="add-carreview" value="Save">
                 </div>
             </div>

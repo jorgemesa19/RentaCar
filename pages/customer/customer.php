@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Customer</h1>
+            <h1>Cliente</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -26,7 +26,7 @@
         include 'function.php'; 
         $add_btn = "";
         if ($_SESSION['user_type'] == "Administrator"){
-            $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-customer'><i class='fa fa-plus'></i> Add</button>";
+            $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-customer'><i class='fa fa-plus'></i> Añadir</button>";
         }
         ?>
       <!-- Default box -->
@@ -39,14 +39,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class='text-center'>Profile Image</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Contact Number</th>
-                        <th>Fb Account</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Status</th>
+                        <th class='text-center'>Perfil imagen</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Numero de contacto</th>
+                        <th>Cuenta de FB</th>
+                        <th>Nombre de usuario</th>
+                        <th>Contraseña</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,14 +84,14 @@
                         if ($_SESSION['user_type'] == "Administrator"){
                             $delete_btn = "
                             <button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-customer-$customer_id'>
-                                    <i class='nav-icon fas fa-trash'></i> Delete
+                                    <i class='nav-icon fas fa-trash'></i> Eliminar
                                 </button> ";
                         }
 
                         if ($account_status == 1){
-                            $status_text = "<span class='badge badge-success'>Active</span>";
+                            $status_text = "<span class='badge badge-success'>Activo</span>";
                         } else {
-                            $status_text = "<span class='badge badge-warning'>Inactive</span>";
+                            $status_text = "<span class='badge badge-warning'>Inactivo</span>";
                         }
                         echo "<tr>
                             <td class='text-center'>
@@ -101,13 +101,13 @@
                                 $delete_btn
                                 <a href='../customer-credential/customer-credential.php?customer_id=$customer_id&customer_name=$customer_name'>
                                     <button class='btn elevation-1 btn-sm btn-default btn-xs'>
-                                        <i class='nav-icon fas fa-user'></i> Credentials
+                                        <i class='nav-icon fas fa-user'></i> Credenciales
                                     </button> 
                                 </a>
                             </td>
                             <td class='text-center'>
                                 <img src='../uploads/$profile_image' class='img' style='width:100px;' alt='Image'><br>
-                                <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_image-$customer_id'><i class='nav-icon fas fa-pen'></i> Edit Picture</button>
+                                <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_image-$customer_id'><i class='nav-icon fas fa-pen'></i> Editar imagen</button>
                             </td>
                             <td>$customer_name</td>
                             <td>$address</td>

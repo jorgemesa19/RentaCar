@@ -5,7 +5,7 @@
             <div class="modal-body">
                 <input type="text" class="form-control" name="owner_credential_id" value="<?php echo $owner_credential_id ?>" hidden>
                 <input type="text" name="old_file_upload" value="<?php echo $file_upload; ?>" hidden>
-                ¿Estás seguro de boorarlo?
+                ¿Estás seguro de borrarlo?
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>

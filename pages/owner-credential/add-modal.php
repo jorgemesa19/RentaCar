@@ -6,7 +6,7 @@
                     
                     <div class="form-group">
                         <label for="credential_name">Nombre de la credencial</label>
-                        <input type="text" class="form-control form-control-border" id="credential_name" name="credential_name" placeholder="Credential Name" required>
+                        <input type="text" class="form-control form-control-border" id="credential_name" name="credential_name" placeholder="Nombre credencial" required>
                     </div>
                     
                     <div class="form-group">

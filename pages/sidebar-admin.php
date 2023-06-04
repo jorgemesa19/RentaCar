@@ -5,7 +5,7 @@
             <a href="../dashboard/dashboard.php" class="nav-link">
                 <i class="nav-icon fa  fa-cube"></i>
                 <p>
-                    Dashboard
+                    Panel administrador
                 </p>
             </a>
         </li>
@@ -14,7 +14,7 @@
             <a href="../admin/admin.php" class="nav-link">
                 <i class="nav-icon fa  ion-android-desktop"></i>
                 <p>
-                    Admin
+                    Administradores
                 </p>
             </a>
         </li>
@@ -23,7 +23,7 @@
             <a href="../customer/customer.php" class="nav-link">
                 <i class="nav-icon fa  ion-android-contacts"></i>
                 <p>
-                    Customers
+                    Clientes
                 </p>
             </a>
         </li>
@@ -32,7 +32,7 @@
             <a href="../owner/owner.php" class="nav-link">
                 <i class="nav-icon fa  ion-android-contacts"></i>
                 <p>
-                    Owners
+                    Dueños
                 </p>
             </a>
         </li>
@@ -41,7 +41,7 @@
             <a href="../car/car.php" class="nav-link">
                 <i class="nav-icon fa  ion-android-car"></i>
                 <p>
-                    Cars
+                    Carros
                 </p>
             </a>
         </li>
@@ -50,7 +50,7 @@
             <a href="../rental/rental.php" class="nav-link">
                 <i class="nav-icon fa  ion-android-list"></i>
                 <p>
-                    Rentals
+                    Rentas
                 </p>
             </a>
         </li>
@@ -59,7 +59,7 @@
             <a href="../payment/payment.php" class="nav-link">
                 <i class="nav-icon fa  ion-calculator"></i>
                 <p>
-                    Payments
+                    Pagos
                     
                 </p>
             </a>

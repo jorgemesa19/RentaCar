@@ -4,14 +4,14 @@
           <div class="modal-content">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="profile_image<?php echo $customer_id; ?>">Choose New Profile Image for <?php echo "<b>$customer_name</b>"; ?></label>
+                    <label for="profile_image<?php echo $customer_id; ?>">Elegir nuevo foto para:  <?php echo "<b>$customer_name</b>"; ?></label>
                     <input type="file" class="form-control form-control-border" id="profile_image<?php echo $customer_id; ?>" name="profile_image" accept="image/*" required>
                     <input type="text" name="customer_id" value="<?php echo $customer_id; ?>" hidden>
                     <input type="text" name="old_profile_image" value="<?php echo $profile_image; ?>" hidden>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
               <input type="submit" class="btn btn-primary" name="edit-profile_image" value="Save">
             </div>
           </div>
@@ -38,7 +38,7 @@ uploadField<?php echo $customer_id; ?>.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'File is not an Image'
+                title: 'El archivo no es una imagen'
                 })
                 });
 
@@ -58,7 +58,7 @@ uploadField<?php echo $customer_id; ?>.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'Image too large! Image must not exceed 2mb.'
+                title: 'La imagen supera los 2mb'
                 })
                 });
 

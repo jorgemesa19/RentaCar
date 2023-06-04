@@ -4,14 +4,14 @@
           <div class="modal-content">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="login_image">Choose Image</label>
+                    <label for="login_image">Elegir imagen</label>
                     <input type="file" class="form-control form-control-border" id="login_image" name="login_image" accept="image/*" required>
                     <input type="text" name="setting_id" value="<?php echo $setting_id;?>" hidden>
                     <input type="text" name="old_login_image" value="<?php echo $login_image; ?>" hidden>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cerrar</button>
               <input type="submit" class="btn btn-primary btn-flat" name="edit-login_image" value="Save">
             </div>
           </div>
