@@ -28,12 +28,17 @@
           <form method="post">
               <div class="card-body">
             <?php
-            $cn = new mysqli (HOST, USER, PW, DB);
-            $sql="SELECT car_id, car_name, description, car_model_year, car_brand, color, capacity, plate_number, rate, owner_id, status, proof_of_ownership FROM tblcar WHERE car_id = ?";
-            $qry=$cn->prepare($sql);
+            $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+            $user = "postgres"; // Nombre de usuario de la base de datos
+            $password = "9090"; // Contraseña de la base de datos
+            $dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+            $cn = new mysqli($host, $user, $password, $dbname);
+            $sql = "SELECT car_id, car_name, description, car_model_year, car_brand, color, capacity, plate_number, rate, owner_id, status, proof_of_ownership FROM tblcar WHERE car_id = ?";
+            $qry = $cn->prepare($sql);
             $qry->bind_param("s", $_GET['car_id']);
             $qry->execute();
-            $qry->bind_result($car_id, $car_name, $description, $car_model_year, $car_brand, $color, $capacity, $plate_number, $rate, $owner_id,   $status, $proof_of_ownership);
+            $qry->bind_result($car_id, $car_name, $description, $car_model_year, $car_brand, $color, $capacity, $plate_number, $rate, $owner_id, $status, $proof_of_ownership);
             $qry->store_result();
             $qry->fetch();
             ?>
@@ -82,9 +87,9 @@
                 <label for="owner_id">Owner</label>
                 <select class='custom-select form-control-border' name="owner_id">
                     <?php
-                    $cn = new mysqli (HOST, USER, PW, DB);
-                    $sql="SELECT owner_id, owner_name FROM tblowner WHERE owner_id = ?";
-                    $qry=$cn->prepare($sql);
+                    $cn = new mysqli($host, $user, $password, $dbname);
+                    $sql = "SELECT owner_id, owner_name FROM tblowner WHERE owner_id = ?";
+                    $qry = $cn->prepare($sql);
                     $qry->bind_param("s", $owner_id);
                     $qry->execute();
                     $qry->bind_result($owner_id, $owner_name);
@@ -93,9 +98,9 @@
                     echo " <option value='$owner_id'>$owner_name</option>";
                     
                     
-                    $cn = new mysqli (HOST, USER, PW, DB);
-                    $sql="SELECT owner_id, owner_name FROM tblowner WHERE owner_id <> ?";
-                    $qry=$cn->prepare($sql);
+                    $cn = new mysqli($host, $user, $password, $dbname);
+                    $sql = "SELECT owner_id, owner_name FROM tblowner WHERE owner_id <> ?";
+                    $qry = $cn->prepare($sql);
                     $qry->bind_param("s", $owner_id);
                     $qry->execute();
                     $qry->bind_result($owner_id, $owner_name);

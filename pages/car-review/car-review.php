@@ -28,18 +28,24 @@
         include 'add-modal.php';
         include 'function.php'; 
         
-        $cn = new mysqli (HOST, USER, PW, DB);
-        if ($_SESSION['user_type'] == "Administrator"){
-            $sql="SELECT review.review_id, review.review, review.review_score, review.date, review.customer_id, review.car_id, customer.customer_name, customer.profile_image 
+        $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+        $user = "postgres"; // Nombre de usuario de la base de datos
+        $password = "9090"; // Contraseña de la base de datos
+        $dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+        $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
+        if ($_SESSION['user_type'] == "Administrator") {
+            $sql = "SELECT review.review_id, review.review, review.review_score, review.date, review.customer_id, review.car_id, customer.customer_name, customer.profile_image 
             FROM tblcarreview AS review
             INNER JOIN tblcustomer AS customer
             ON review.customer_id = customer.customer_id
             WHERE review.car_id = ?
             ORDER BY review.review_id DESC";
         }
-        if ($_SESSION['user_type'] == "Owner"){
+        if ($_SESSION['user_type'] == "Owner") {
             $owner_id = $_SESSION['user_id'];
-            $sql="SELECT review.review_id, review.review, review.review_score, review.date, review.customer_id, review.car_id, customer.customer_name, customer.profile_image 
+            $sql = "SELECT review.review_id, review.review, review.review_score, review.date, review.customer_id, review.car_id, customer.customer_name, customer.profile_image 
             FROM tblcarreview AS review
             INNER JOIN tblcustomer AS customer
             ON review.customer_id = customer.customer_id
@@ -51,19 +57,19 @@
             ORDER BY review.review_id DESC";
             $add_btn = "";
         }
-        if ($_SESSION['user_type'] == "Customer"){
-            $sql="SELECT review.review_id, review.review, review.review_score, review.date, review.customer_id, review.car_id, customer.customer_name, customer.profile_image 
+        if ($_SESSION['user_type'] == "Customer") {
+            $sql = "SELECT review.review_id, review.review, review.review_score, review.date, review.customer_id, review.car_id, customer.customer_name, customer.profile_image 
             FROM tblcarreview AS review
             INNER JOIN tblcustomer AS customer
             ON review.customer_id = customer.customer_id
             WHERE review.car_id = ?
             ORDER BY review.review_id DESC";
         }
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("s", $car_id);
-        $qry->execute();
-        $qry->bind_result($review_id, $review, $review_score, $date, $customer_id, $car_id, $customer_name, $profile_image);
-        $qry->store_result();
+
+        $stmt = $conn->prepare($sql);
+        $stmt->bindParam(1, $car_id);
+        $stmt->execute();
+        $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
         ?>
         
       <!-- Default box -->
@@ -76,9 +82,17 @@
         </div>
         <div class="card-body">
             <?php
-            while ($qry->fetch()){
+            foreach ($results as $row) {
+                $review_id = $row['review_id'];
+                $review = $row['review'];
+                $review_score = $row['review_score'];
+                $date = $row['date'];
+                $customer_id = $row['customer_id'];
+                $customer_name = $row['customer_name'];
+                $profile_image = $row['profile_image'];
+
                 $action_btn = "";
-                if ($customer_id == $_SESSION['user_id']){
+                if ($customer_id == $_SESSION['user_id']) {
                     $action_btn = "
                     <button class='btn elevation-1 btn-sm btn-danger btn-xs ' data-toggle='modal' data-target='#delete-carreview-$review_id'>
                         <i class='nav-icon fas fa-trash'></i>
@@ -89,7 +103,7 @@
                         </button>
                     </a>";
                 }
-                if ($_SESSION['user_type'] == "Administrator"){
+                if ($_SESSION['user_type'] == "Administrator") {
                     $action_btn = "
                     <button class='btn elevation-1 btn-sm btn-danger btn-xs ' data-toggle='modal' data-target='#delete-carreview-$review_id'>
                         <i class='nav-icon fas fa-trash'></i>
@@ -100,6 +114,7 @@
                         </button>
                     </a>";
                 }
+
                 echo "
                 <div class='post clearfix'>
                     <div class='user-block'>

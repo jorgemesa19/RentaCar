@@ -53,14 +53,25 @@
                 </thead>
                 <tbody>
                 <?php
-                $cn = new mysqli (HOST, USER, PW, DB);
+                $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+                $user = "postgres"; // Nombre de usuario de la base de datos
+                $password = "9090"; // Contraseña de la base de datos
+                $dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+                $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+                
                 $sql="SELECT credential_id, credential_name, file_upload, customer_id FROM tblcustomercredential WHERE customer_id = ?";
-                $qry=$cn->prepare($sql);
-                $qry->bind_param("s", $customer_id);
-                $qry->execute();
-                $qry->bind_result($credential_id, $credential_name, $file_upload, $customer_id);
-                $qry->store_result();
-                while ($qry->fetch()){
+                $stmt = $conn->prepare($sql);
+                $stmt->bindParam(1, $customer_id);
+                $stmt->execute();
+                $result = $stmt->fetchAll();
+                
+                foreach ($result as $row){
+                    $credential_id = $row['credential_id'];
+                    $credential_name = $row['credential_name'];
+                    $file_upload = $row['file_upload'];
+                    $customer_id = $row['customer_id'];
+
                     $file_upload_text = substr($file_upload,0,20)."...";
                     echo "<tr>
                         <td class='text-center'>

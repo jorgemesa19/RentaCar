@@ -25,9 +25,18 @@
         include 'function.php'; 
         $car_id = $_GET['car_id'];
         $car_name = $_GET['car_name'];
-        $cn = new mysqli (HOST, USER, PW, DB);
+        $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+        $user = "postgres"; // Nombre de usuario de la base de datos
+        $password = "9090"; // Contraseña de la base de datos
+        $dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+        $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
         $sql="SELECT image_id, image_description, image, car_id FROM tblcarimage WHERE car_id = ?";
-        $qry=$cn->prepare($sql);
+        $qry=$conn->prepare($sql);
         $qry->bind_param("s", $car_id);
         $qry->execute();
         $qry->bind_result($image_id, $image_description, $image, $car_id);
