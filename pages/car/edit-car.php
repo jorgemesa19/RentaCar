@@ -43,7 +43,7 @@
             ?>
             
             <div class="form-group">
-                <label for="car_name">Nombre del carro</label>
+                <label for="car_name">Nombre del auto</label>
                 <input type="text" class="form-control form-control-border" id="car_name" name="car_name" value="<?php echo $car_name;?>" placeholder="Nombre del carro" required>
             </div>
                     
@@ -53,7 +53,7 @@
             </div>
                     
             <div class="form-group">
-                <label for="car_model_year"> Año del vehiculo</label>
+                <label for="car_model_year"> Año del auto</label>
                 <input type="text" class="form-control form-control-border" id="car_model_year" name="car_model_year" value="<?php echo $car_model_year;?>" placeholder="Modelo" required>
             </div>
                     
@@ -73,17 +73,17 @@
             </div>
                     
             <div class="form-group">
-                <label for="plate_number">Placa del vehiculo</label>
+                <label for="plate_number">Placa del auto</label>
                 <input type="text" class="form-control form-control-border" id="plate_number" name="plate_number" value="<?php echo $plate_number;?>" placeholder="Número de placa" required>
             </div>
                     
             <div class="form-group">
-                <label for="rate">Calificacion</label>
+                <label for="rate">Calificación</label>
                 <input type="text" class="form-control form-control-border" id="rate" name="rate" value="<?php echo $rate;?>" placeholder="Calificacion" required>
             </div>
                     
             <div class="form-group">
-                <label for="owner_id">Dueño</label>
+                <label for="owner_id">propietario</label>
                 <select class='custom-select form-control-border' name="owner_id">
                     <?php
                     $stmt = $conn->prepare("SELECT owner_id, owner_name FROM tblowner WHERE owner_id = ?");
@@ -121,7 +121,7 @@
               <div class="card-footer justify-content-between">
                   <a href="car.php"><button type="button" class="btn btn-default">Cerrar</button></a>
                     <input type="text" name="car_id" value="<?php echo $car_id;?>" hidden>
-                    <input type="submit" class="btn btn-primary " id="edit-car_btn" name="edit-car" value="Save">
+                    <input type="submit" class="btn btn-primary " id="edit-car_btn" name="edit-car" value="Guardar">
                 </div>
           </form>
         <!-- /.card-body -->

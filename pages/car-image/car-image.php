@@ -43,17 +43,7 @@
             $image_description = $row['image_description'];
             $image = $row['image'];
             $current_car_id = $row['car_id']; // Utilizamos una variable diferente para almacenar el valor del parámetro
-
-            echo "<div class='col-md-3'>
-                    <img class='img-fluid mb-3 elevation-1 img-bordered-sm' src='../uploads/$image' alt='Photo'>
-                    <p>$image_description</p>
-                    <button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-carimage-$image_id'>
-                        <i class='nav-icon fas fa-trash'></i>
-                    </button>
-                </div>";
-
-            include 'delete-modal.php';
-        }
+          }
 
         if ($_SESSION['user_type'] == "Administrator" || $_SESSION['user_type'] == "Owner"){
             $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-carimage'><i class='fa fa-plus'></i> Añadir</button>";

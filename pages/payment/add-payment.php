@@ -42,14 +42,6 @@
             $qry->execute([$rental_id]);
             $result = $qry->fetch(PDO::FETCH_ASSOC);
             
-            if (!$result) {
-                echo "
-                <button class='btn btn-info' data-toggle='modal' data-target='#add-payment'>
-                    <i class='nav-icon fas fa-plus'></i> Añadir pago
-                </button>
-               ";
-            }
-            
             $sql = "SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
                     FROM tblpayment AS payment
                     INNER JOIN tblcustomer AS customer
@@ -68,16 +60,25 @@
               <a href="../rental/rental.php">
                   <button class="btn btn-default">Atras</button>
               </a>
+              <?php
+                if (!$result) {
+                  echo "
+                  <button class='btn btn-info' data-toggle='modal' data-target='#add-payment'>
+                      <i class='nav-icon fas fa-plus'></i> Añadir pago
+                  </button>
+                ";             
+                }
+              ?>
           </div>
         <div class="card-body">
             <table id="table1" class="table table-hover table-sm">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Monto del pago</th>
-                        <th>Agregar cargos</th>
+                        <th>Monto del pago (COP)</th>
+                        <th>Cargos adicionales (COP)</th>
                         <th>Fecha de pago</th>
-                        <th>Prueba de pago</th>
+                        <th>Comprobante de pago</th>
                         <th>Cliente</th>
                     </tr>
                 </thead>

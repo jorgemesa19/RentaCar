@@ -26,10 +26,10 @@
             <table id="table1" class="table table-hover table-sm">
                 <thead>
                     <tr>
-                        <th>Monto del pago</th>
-                        <th>Agregar cargos</th>
+                        <th>Monto del pago (COP)</th>
+                        <th>Cargos adicionales (COP)</th>
                         <th>Fecha de pago</th>
-                        <th>Prueba de pago</th>
+                        <th>Comprobante de pago</th>
                         <th>Cliente</th>
                     </tr>
                 </thead>
@@ -111,8 +111,6 @@
                       include 'view-proof_of_payment-modal.php';
                   }
                   ?>
-
-                
                 </tbody>
             </table>
         </div>

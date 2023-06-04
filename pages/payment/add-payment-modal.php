@@ -17,13 +17,13 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                 <div class="modal-body">
                     
                     <div class="form-group">
-                        <label for="payment_amount">Monto de pago</label>
+                        <label for="payment_amount">Monto de pago (COP)</label>
                         <input type="number" class="form-control form-control-border" id="payment_amount" name="payment_amount" placeholder="Monto de pago" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="add_charges">Agregar cargos</label>
-                        <input type="number" class="form-control form-control-border" id="add_charges" name="add_charges" placeholder="Agregar cargos" required>
+                        <label for="add_charges">Agregar cargos adicionales (COP)</label>
+                        <input type="number" class="form-control form-control-border" id="add_charges" name="add_charges" placeholder="Agregar autos" required>
                     </div>
                     
                     <div class="form-group">
@@ -32,7 +32,7 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                     </div>
                     
                     <div class="form-group">
-                        <label for="proof_of_payment">Prueba de pago</label>
+                        <label for="proof_of_payment">Comprobante de pago</label>
                         <input type="file" class="form-control form-control-border" id="proof_of_payment" name="proof_of_payment" accept="image/*" required>
                     </div>
                     
@@ -41,7 +41,7 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                     <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
                     <input type="text" name="rental_id" value="<?php echo $rental_id;?>" hidden>
                     <input type="text" name="customer_id" value="<?php echo $customer_id;?>" hidden>
-                    <input type="submit" class="btn btn-primary " id="add-payment_btn" name="add-payment" value="Save">
+                    <input type="submit" class="btn btn-primary " id="add-payment_btn" name="add-payment" value="Guardar">
                 </div>
             </div>
         </form>

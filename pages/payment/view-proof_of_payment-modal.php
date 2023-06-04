@@ -16,7 +16,7 @@
                     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
                     // Consulta para obtener la ruta de la imagen de comprobante de pago
-                    $query = "SELECT proof_of_payment FROM tabla WHERE payment_id = :payment_id";
+                    $query = "SELECT proof_of_payment FROM tblpayment WHERE payment_id = :payment_id";
                     $stmt = $conn->prepare($query);
                     $stmt->bindParam(':payment_id', $payment_id);
                     $stmt->execute();

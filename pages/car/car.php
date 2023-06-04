@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Carros</h1>
+            <h1>Autos</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -24,7 +24,7 @@
         include 'add-modal.php';
         include 'function.php'; 
         
-        $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-car'><i class='fa fa-plus'></i> Add</button>";
+        $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-car'><i class='fa fa-plus'></i> Añadir</button>";
         if ($_SESSION['user_type'] == "Customer"){
             $add_btn = "";
         }
@@ -40,15 +40,15 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Nombre del carro</th>
+                        <th>nombre del auto</th>
                         <th>Descripción</th>
-                        <th>Año del modelo</th>
+                        <th>Modelo</th>
                         <th>Marca</th>
                         <th>Color</th>
                         <th>Capacidad</th>
-                        <th>Numero de placa</th>
+                        <th>Nro. de placa</th>
                         <th>Calificación</th>
-                        <th>Dueño</th>
+                        <th>Propietario</th>
                         <th>Estado</th>
                         <th>Prueba de propiedad</th>
                     </tr>

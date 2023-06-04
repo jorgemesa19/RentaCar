@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Revisión del carro <b><?php echo $_GET['car_name'];?></b></h1>
+            <h1>Revisión del auto <b><?php echo $_GET['car_name'];?></b></h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -23,7 +23,7 @@
         <?php  
         $car_id = $_GET['car_id'];
         $car_name = $_GET['car_name'];
-        $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-carreview'><i class='fa fa-plus'></i> Add</button>";
+        $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-carreview'><i class='fa fa-plus'></i> Añadir</button>";
         
         include 'add-modal.php';
         include 'function.php'; 
@@ -76,7 +76,7 @@
       <div class="card">
         <div class="card-header">
             <a href="../car/car.php">
-                <button class="btn btn-default">Go back</button>
+                <button class="btn btn-default">Atrás</button>
             </a>
             <?php echo $add_btn;?>
         </div>

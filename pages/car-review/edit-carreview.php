@@ -91,7 +91,7 @@
                   <button type="button" class="btn btn-default">Volver</button>
               </a>
               <input type="text" name="review_id" value="<?php echo $review_id;?>" hidden>
-              <input type="submit" class="btn btn-primary " id="edit-carreview_btn" name="edit-carreview" value="Save">
+              <input type="submit" class="btn btn-primary " id="edit-carreview_btn" name="edit-carreview" value="Guardar">
           </div>
             <!-- /.card-body -->
           </form>

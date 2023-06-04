@@ -19,7 +19,7 @@
                   $owner_name = $_GET['owner_name'];
                   
                 $back_btn = "<a href='../owner/owner.php'>
-                                <button class='btn btn-default'>Go Back</button>
+                                <button class='btn btn-default'>Atrás</button>
                               </a>";
               }
               ?>
@@ -40,7 +40,7 @@
       <div class="card">
         <div class="card-header">
             <?php echo $back_btn; ?>
-            <button class="btn btn-info" data-toggle="modal" data-target="#add-ownercredential"><i class="fa fa-plus"></i> Add</button>
+            <button class="btn btn-info" data-toggle="modal" data-target="#add-ownercredential"><i class="fa fa-plus"></i> Añadir</button>
         </div>
         <div class="card-body">
             <table id="table1" class="table table-hover table-sm">
