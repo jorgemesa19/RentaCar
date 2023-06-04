@@ -5,19 +5,19 @@
                 <div class="modal-body">
                     
                     <div class="form-group">
-                        <label for="credential_name">Credential Name</label>
+                        <label for="credential_name">Nombre de la credencial</label>
                         <input type="text" class="form-control form-control-border" id="credential_name" name="credential_name" placeholder="Credential Name" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="file_upload">File Upload</label>
+                        <label for="file_upload">Cargar archivo</label>
                         <input type="file" class="form-control form-control-border" id="file_upload" name="file_upload" required>
                     </div>
                                 
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary " id="add-ownercredential_btn" name="add-ownercredential" value="Save">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
+                    <input type="submit" class="btn btn-primary " id="add-ownercredential_btn" name="add-ownercredential" value="Guardar">
                 </div>
             </div>
         </form>

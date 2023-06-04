@@ -1,3 +1,21 @@
+<?php
+// Parámetros de conexión a la base de datos
+$host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+$user = "postgres"; // Nombre de usuario de la base de datos
+$password = "9090"; // Contraseña de la base de datos
+$dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+// Establecer la conexión
+$conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
+// Verificar si la conexión fue exitosa
+if ($conn) {
+    //echo "Conexión exitosa a la base de datos!";
+} else {
+    //echo "Error al conectar a la base de datos.";
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <?php include '../header_footer/header.php'; ?>
@@ -27,14 +45,21 @@
           include 'function.php'; 
           
           $user_id = $_GET['user_id'];
-          $cn = new mysqli (HOST, USER, PW, DB);
-          $sql="SELECT user_id, firstname, middlename, lastname, contact, email, address, username, password, profile_picture, status FROM tbl_user WHERE user_id = ?";
-          $qry=$cn->prepare($sql);
-          $qry->bind_param("s", $user_id);
-          $qry->execute();
-          $qry->bind_result($user_id, $firstname, $middlename, $lastname, $contact, $email, $address, $username, $password, $profile_picture, $status);
-          $qry->store_result();
-          $qry->fetch();
+          $cn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+          $sql = "SELECT user_id, firstname, middlename, lastname, contact, email, address, username, password, profile_picture, status FROM tbl_user WHERE user_id = ?";
+          $qry = $cn->prepare($sql);
+          $qry->execute([$user_id]);
+          $row = $qry->fetch(PDO::FETCH_ASSOC);
+          $firstname = $row['firstname'];
+          $middlename = $row['middlename'];
+          $lastname = $row['lastname'];
+          $contact = $row['contact'];
+          $email = $row['email'];
+          $address = $row['address'];
+          $username = $row['username'];
+          $password = $row['password'];
+          $profile_picture = $row['profile_picture'];
+          $status = $row['status'];
           ?>
           <form method="post" class="form-horizontal">
               <div class="card-body">

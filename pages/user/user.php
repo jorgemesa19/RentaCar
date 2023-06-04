@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Users (Administrator)</h1>
+            <h1>Usuario (Administrador)</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -27,7 +27,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <button class="btn btn-info" data-toggle="modal" data-target="#add-user"><i class="fa fa-plus"></i> Add</button>
+          <button class="btn btn-info" data-toggle="modal" data-target="#add-user"><i class="fa fa-plus"></i> Agregar</button>
             
         </div>
         <div class="card-body">
@@ -36,36 +36,46 @@
                     <tr>
                         <th></th>
                         <th></th>
-                        <th>Full Name</th>
-                        <th>Contact</th>
+                        <th>Nombre</th>
+                        <th>Contacto</th>
                         <th>Email</th>
-                        <th>Address</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Status</th>
+                        <th>Dirección</th>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                $cn = new mysqli (HOST, USER, PW, DB);
                 $sql="SELECT user_id, firstname, middlename, lastname, contact, email, address, username, password, profile_picture, status FROM tbl_user";
-                $qry=$cn->prepare($sql);
-                $qry->execute();
-                $qry->bind_result($user_id, $firstname, $middlename, $lastname, $contact, $email, $address, $username, $password, $profile_picture, $status);
-                $qry->store_result();
-                while ($qry->fetch()){
+                $stmt=$conn->prepare($sql);
+                $stmt->execute();
+                $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                foreach ($result as $row) {
+                    $user_id = $row['user_id'];
+                    $firstname = $row['firstname'];
+                    $middlename = $row['middlename'];
+                    $lastname = $row['lastname'];
+                    $contact = $row['contact'];
+                    $email = $row['email'];
+                    $address = $row['address'];
+                    $username = $row['username'];
+                    $password = $row['password'];
+                    $profile_picture = $row['profile_picture'];
+                    $status = $row['status'];
+
                     if ($status == 1){
-                        $active = "<span class='right badge badge-success'>Active</span>";
+                        $active = "<span class='right badge badge-success'>Activo</span>";
                     }
                     else {
-                        $active = "<span class='right badge badge-warning'>Inactive</span>";
+                        $active = "<span class='right badge badge-warning'>Inactivo</span>";
                     }
                     echo "<tr>
                         <td class='text-center'>
                         <a href='edit-user.php?user_id=$user_id'><button class='btn btn-sm elevation-1 btn-success btn-xs'><i class='nav-icon fas fa-pen'></i></button></a> 
                         </td>
                         <td class='text-center'><img src='../uploads/$profile_picture' class='img' style='width:100px;' alt='Image'><br>
-                            <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_picture-$user_id'><i class='nav-icon fas fa-pen'></i> Edit Picture</button>
+                            <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_picture-$user_id'><i class='nav-icon fas fa-pen'></i> Editar foto</button>
                         </td>
                         <td>$firstname $middlename $lastname</td>
                         <td>$contact</td>
@@ -73,7 +83,7 @@
                         <td>$address</td>
                         <td>$username</td>
                         <td class='text-center'>
-                            <button class='btn btn-sm elevation-1 btn-default btn-sm' data-toggle='modal' data-target='#edit-password-$user_id'>Change Password</button>
+                            <button class='btn btn-sm elevation-1 btn-default btn-sm' data-toggle='modal' data-target='#edit-password-$user_id'>Cambiar contraseña</button>
                         </td>
                         <td>$active</td>
                         </tr>";

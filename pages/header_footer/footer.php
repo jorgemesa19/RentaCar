@@ -1,4 +1,4 @@
 
   <footer class="main-footer border-0">
-    Car Rental System
+    SISTEMA DE RENTA DE AUTOS
   </footer>

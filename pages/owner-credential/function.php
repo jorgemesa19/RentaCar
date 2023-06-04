@@ -16,57 +16,53 @@ if(isset($_POST['add-ownercredential'])){
         $credential_name= $_POST['credential_name'];
         $file_upload= $newfilename;
 
-        $cn = new mysqli (HOST, USER, PW, DB);
-        $sql="INSERT INTO tblownercredential VALUES (?,?,?,?)";
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("ssss", $owner_credential_id, $credential_name, $file_upload, $owner_id);
-        if ($qry->execute()){
+        $sql = "INSERT INTO tblownercredential VALUES (?,?,?,?)";
+        $qry = $conn->prepare($sql);
+        $qry->execute([$owner_credential_id, $credential_name, $file_upload, $owner_id]);
+
+        if ($qry->rowCount() > 0) {
             echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=success';</script>";
-        }
-        else {
+        } else {
             echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=failed';</script>";
         }
-        } else {
-            echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=failed-upload';</script>";
-        }
+    } else {
+        echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=failed-upload';</script>";
+    }
     
 }
 if(isset($_POST['edit-ownercredential'])){
     
     $owner_credential_id= $_POST['owner_credential_id'];
     $credential_name= $_POST['credential_name'];
-            
-    $cn = new mysqli (HOST, USER, PW, DB);
-    $sql="UPDATE tblownercredential SET credential_name = ? WHERE owner_credential_id = ?";
-    $qry=$cn->prepare($sql);
-    $qry->bind_param("ss", $credential_name, $owner_credential_id);
-    if ($qry->execute()){
+    
+    $sql = "UPDATE tblownercredential SET credential_name = ? WHERE owner_credential_id = ?";
+    $qry = $conn->prepare($sql);
+    $qry->execute([$credential_name, $owner_credential_id]);
+
+    if ($qry->rowCount() > 0) {
         echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=success';</script>";
-    }
-    else {
+    } else {
         echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=failed';</script>";
     }
 }
 if(isset($_POST['delete-ownercredential'])){
     
-    $owner_credential_id= $_POST['owner_credential_id'];         
-        $cn = new mysqli (HOST, USER, PW, DB);
-        $sql="DELETE FROM tblownercredential WHERE owner_credential_id=?";
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("s", $owner_credential_id);
-        if ($qry->execute()){
-            
-            $old_file_upload = $_POST ['old_file_upload'];
-                if ($old_file_upload != 'img-default.jpg'){
-                    //delete old file_upload
-                    unlink("../uploads/$old_file_upload");
-                }
-            echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=success';</script>";
+    $owner_credential_id= $_POST['owner_credential_id'];
+
+    $sql = "DELETE FROM tblownercredential WHERE owner_credential_id=?";
+    $qry = $conn->prepare($sql);
+    $qry->execute([$owner_credential_id]);
+
+    if ($qry->rowCount() > 0) {
+        $old_file_upload = $_POST ['old_file_upload'];
+        if ($old_file_upload != 'img-default.jpg') {
+            //delete old file_upload
+            unlink("../uploads/$old_file_upload");
         }
-        else {
-            echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=failed';</script>";
-        } 
-    
+        echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=success';</script>";
+    } else {
+        echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=failed';</script>";
+    } 
     
 }
 if(isset($_POST['edit-file_upload'])){
@@ -85,21 +81,19 @@ if(isset($_POST['edit-file_upload'])){
         $file_upload= $newfilename;
         $old_file_upload= $_POST['old_file_upload'];
 
-            
-        $cn = new mysqli (HOST, USER, PW, DB);
-        $sql="UPDATE tblownercredential SET file_upload = ? WHERE owner_credential_id = ?";
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("ss", $file_upload, $owner_credential_id);
-        if ($qry->execute()){
+        $sql = "UPDATE tblownercredential SET file_upload = ? WHERE owner_credential_id = ?";
+        $qry = $conn->prepare($sql);
+        $qry->execute([$file_upload, $owner_credential_id]);
+
+        if ($qry->rowCount() > 0) {
             echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=success';</script>";
             
-                $old_file_upload = $_POST ['old_file_upload'];
-                if ($old_file_upload != 'img-default.jpg'){
-                    //delete old file_upload
-                    unlink("../uploads/$old_file_upload");
-                }
-        }
-        else {
+            $old_file_upload = $_POST ['old_file_upload'];
+            if ($old_file_upload != 'img-default.jpg') {
+                //delete old file_upload
+                unlink("../uploads/$old_file_upload");
+            }
+        } else {
             echo "<script>window.location.href = 'owner-credential.php?owner_id=$owner_id&owner_name=$owner_name&status=failed';</script>";
         }
     }

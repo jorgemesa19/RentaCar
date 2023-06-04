@@ -4,19 +4,19 @@
           <div class="modal-content">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="password_<?php echo $user_id; ?>">New Password</label>
-                    <input type="password" class="form-control form-control-border" name="password" id="password_<?php echo $user_id; ?>" placeholder="Password" required>
+                    <label for="password_<?php echo $user_id; ?>">Nueva contraseña</label>
+                    <input type="password" class="form-control form-control-border" name="password" id="password_<?php echo $user_id; ?>" placeholder="Contraseña" required>
                     <input type="text" name="user_id" value="<?php echo $user_id; ?>" hidden>
                 </div>
                 <div class="form-group">
-                    <label for="confirm_password_<?php echo $user_id; ?>">Confirm Password</label>
-                    <input type="password" class="form-control form-control-border" id="confirm_password_<?php echo $user_id; ?>" placeholder="Password" oninput="confirmPassword<?php echo $user_id; ?>()" required>
+                    <label for="confirm_password_<?php echo $user_id; ?>">Confirmar contraseña</label>
+                    <input type="password" class="form-control form-control-border" id="confirm_password_<?php echo $user_id; ?>" placeholder="Contraseña" oninput="confirmPassword<?php echo $user_id; ?>()" required>
                     <div id="response_confirm_password_<?php echo $user_id; ?>"></div>
                 </div>
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-primary" id="edit-password_btn<?php echo $user_id; ?>" name="edit-password" value="Save">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <input type="submit" class="btn btn-primary" id="edit-password_btn<?php echo $user_id; ?>" name="edit-password" value="Guardar">
             </div>
           </div>
             </form>
@@ -32,7 +32,7 @@
         var confirm_password_<?php echo $user_id; ?> = document.getElementById("confirm_password_<?php echo $user_id; ?>").value;
         
         if(password_<?php echo $user_id; ?> !== confirm_password_<?php echo $user_id; ?>){
-            document.getElementById("response_confirm_password_<?php echo $user_id; ?>").innerHTML = "<span style='color: red;'>Password does not match!</span>";
+            document.getElementById("response_confirm_password_<?php echo $user_id; ?>").innerHTML = "<span style='color: red;'>¡Las contrseñas no coinciden!</span>";
             document.getElementById("edit-password_btn<?php echo $user_id; ?>").disabled = true;
             document.getElementById('confirm_password_<?php echo $user_id; ?>').className = 'form-control form-control-border is-invalid';
         }

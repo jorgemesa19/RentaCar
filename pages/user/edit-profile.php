@@ -24,14 +24,26 @@
           include 'function.php'; 
           
           $user_id = $_SESSION['user_id'];
-          $cn = new mysqli (HOST, USER, PW, DB);
+          $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+          $user = "postgres"; // Nombre de usuario de la base de datos
+          $password = "9090"; // Contraseña de la base de datos
+          $dbname = "bd_rentaCar"; // Nombre de la base de datos
+          $cn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
           $sql="SELECT user_id, lastname, firstname, middlename, contact, email, address, username, password, profile_picture, status FROM tbl_user WHERE user_id = ?";
           $qry=$cn->prepare($sql);
-          $qry->bind_param("s", $user_id);
+          $qry->bindParam(1, $user_id);
           $qry->execute();
-          $qry->bind_result($user_id, $lastname, $firstname, $middlename, $contact, $email, $address, $username, $password, $profile_picture, $status);
-          $qry->store_result();
-          $qry->fetch();
+          $result = $qry->fetch(PDO::FETCH_ASSOC);
+          $lastname = $result['lastname'];
+          $firstname = $result['firstname'];
+          $middlename = $result['middlename'];
+          $contact = $result['contact'];
+          $email = $result['email'];
+          $address = $result['address'];
+          $username = $result['username'];
+          $password = $result['password'];
+          $profile_picture = $result['profile_picture'];
+          $status = $result['status'];
           ?>
           <div class="row">
               <div class="col-4">
@@ -137,7 +149,7 @@
 <script>
 $(function () {
       $("#example1").DataTable({
-      "responsive": false, "lengthChange": false, "autoWidth": false, "scrollX":true
+      "responsive": false,  "lengthChange": false, "autoWidth": false, "scrollX":true
       }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
       
       $("#example2").DataTable({

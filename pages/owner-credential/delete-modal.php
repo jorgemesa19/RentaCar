@@ -5,11 +5,11 @@
             <div class="modal-body">
                 <input type="text" class="form-control" name="owner_credential_id" value="<?php echo $owner_credential_id ?>" hidden>
                 <input type="text" name="old_file_upload" value="<?php echo $file_upload; ?>" hidden>
-                Are you sure you want to delete?
+                ¿Estás seguro de boorarlo?
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-danger" name="delete-ownercredential" value="Delete">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <input type="submit" class="btn btn-danger" name="delete-ownercredential" value="Eliminar">
             </div>
           </div>
             </form>

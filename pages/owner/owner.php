@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Owner</h1>
+            <h1>Propietario</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -39,14 +39,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class='text-center'>Profile Image</th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Contact Number</th>
-                        <th>Fb Account</th>
-                        <th>Username</th>
-                        <th>Password</th>
-                        <th>Status</th>
+                        <th class='text-center'>Imagen</th>
+                        <th>Nombre</th>
+                        <th>Dirección</th>
+                        <th>Nro. Contacto</th>
+                        <th>Cuenta de FB</th>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -83,30 +83,30 @@
                         $delete_btn = "";
                         if ($_SESSION['user_type'] == "Administrator"){
                             $delete_btn = "<button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-owner-$owner_id'>
-                                <i class='nav-icon fas fa-trash'></i> Delete
+                                <i class='nav-icon fas fa-trash'></i> Eliminar
                             </button>";
                         }
 
                         if ($account_status == 1){
-                            $status_text = "<span class='badge badge-success'>Active</span>";
+                            $status_text = "<span class='badge badge-success'>Activo</span>";
                         } else {
-                            $status_text = "<span class='badge badge-warning'>Inactive</span>";
+                            $status_text = "<span class='badge badge-warning'>Inactivo</span>";
                         }
                         echo "<tr>
                             <td class='text-center'>
                                 <button class='btn elevation-1 btn-sm btn-success btn-xs' data-toggle='modal' data-target='#edit-owner-$owner_id'>
-                                    <i class='nav-icon fas fa-pen'></i> Edit
+                                    <i class='nav-icon fas fa-pen'></i> Editar
                                 </button> 
                                 $delete_btn
                                 <a href='../owner-credential/owner-credential.php?owner_id=$owner_id&owner_name=$owner_name'>
                                     <button class='btn elevation-1 btn-sm btn-default btn-xs'>
-                                        <i class='nav-icon fas fa-user'></i> Credentials
+                                        <i class='nav-icon fas fa-user'></i> Credenciales
                                     </button> 
                                 </a>
                             </td>
                             <td class='text-center'>
                                 <img src='../uploads/$profile_image' class='img' style='width:100px;' alt='Image'><br>
-                                <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_image-$owner_id'><i class='nav-icon fas fa-pen'></i> Edit Picture</button>
+                                <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_image-$owner_id'><i class='nav-icon fas fa-pen'></i> Editar foto</button>
                             </td>
                             <td>$owner_name</td>
                             <td>$address</td>
@@ -122,7 +122,7 @@
                         include 'delete-modal.php';
                     }
                 } else {
-                    echo "Failed to connect to the database.";
+                    echo "Error en la conexión a la base de datos.";
                 }
                 ?>
                 </tbody>
