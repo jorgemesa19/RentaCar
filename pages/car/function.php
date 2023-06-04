@@ -16,7 +16,6 @@ if (isset($_POST['add-car'])) {
         $filename = basename($_FILES["proof_of_ownership"]["name"]);
         $newfilename = $filename . $newfilename;
 
-        $car_id = null;
         $car_name = $_POST['car_name'];
         $description = $_POST['description'];
         $car_model_year = $_POST['car_model_year'];
@@ -32,9 +31,9 @@ if (isset($_POST['add-car'])) {
         // Establecer la conexión
         $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
 
-        $sql = "INSERT INTO tblcar VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO tblcar (car_id, car_name, description, car_model_year, car_brand, color, capacity, plate_number, rate, owner_id, status, proof_of_ownership) VALUES (DEFAULT,?,?,?,?,?,?,?,?,?,?,?)";
         $qry = $conn->prepare($sql);
-        $qry->execute([$car_id, $car_name, $description, $car_model_year, $car_brand, $color, $capacity, $plate_number, $rate, $owner_id, $status, $proof_of_ownership]);
+        $qry->execute([$car_name, $description, $car_model_year, $car_brand, $color, $capacity, $plate_number, $rate, $owner_id, $status, $proof_of_ownership]);
 
         if ($qry->rowCount() > 0) {
             echo "<script>window.location.href = 'car.php?status=success';</script>";
@@ -42,9 +41,10 @@ if (isset($_POST['add-car'])) {
             echo "<script>window.location.href = 'car.php?status=failed';</script>";
         }
     } else {
-        echo "<script>window.location.href = 'car.php?status=faile-upload';</script>";
+        echo "<script>window.location.href = 'car.php?status=failed-upload';</script>";
     }
 }
+
 
 if (isset($_POST['edit-car'])) {
     $car_id = $_POST['car_id'];

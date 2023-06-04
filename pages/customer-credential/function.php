@@ -12,7 +12,7 @@ if(isset($_POST['add-customercredential'])){
         $filename = basename($_FILES["file_upload"]["name"]);
         $newfilename = $filename.$newfilename;
         
-        $credential_id= null;
+       
         $credential_name= $_POST['credential_name'];
         $file_upload= $newfilename;
 
@@ -23,12 +23,11 @@ if(isset($_POST['add-customercredential'])){
 
         $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
 
-        $sql="INSERT INTO tblcustomercredential VALUES (?,?,?,?)";
+        $sql="INSERT INTO tblcustomercredential (credential_name, file_upload, customer_id) VALUES (?,?,?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(1, $credential_id);
-        $stmt->bindParam(2, $credential_name);
-        $stmt->bindParam(3, $file_upload);
-        $stmt->bindParam(4, $customer_id);
+        $stmt->bindParam(1, $credential_name);
+        $stmt->bindParam(2, $file_upload);
+        $stmt->bindParam(3, $customer_id);
         if ($stmt->execute()){
             echo "<script>window.location.href = 'customer-credential.php?customer_id=$customer_id&customer_name=$customer_name&status=success';</script>";
         }

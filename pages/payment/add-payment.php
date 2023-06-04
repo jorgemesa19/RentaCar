@@ -33,14 +33,34 @@
         $password = "9090"; // Contraseña de la base de datos
         $dbname = "bd_rentaCar"; // Nombre de la base de datos
         
-        $cn = new mysqli($host, $user, $password, $dbname);
-        $sql="SELECT rental_id FROM tblpayment WHERE rental_id = ?";
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("s", $rental_id);
-        $qry->execute();
-        $qry->bind_result($rental_id);
-        $qry->store_result();
-        $qry->fetch();
+        try {
+            $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            
+            $sql = "SELECT rental_id FROM tblpayment WHERE rental_id = ?";
+            $qry = $conn->prepare($sql);
+            $qry->execute([$rental_id]);
+            $result = $qry->fetch(PDO::FETCH_ASSOC);
+            
+            if (!$result) {
+                echo "
+                <button class='btn btn-info' data-toggle='modal' data-target='#add-payment'>
+                    <i class='nav-icon fas fa-plus'></i> Add Payment
+                </button>
+               ";
+            }
+            
+            $sql = "SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
+                    FROM tblpayment AS payment
+                    INNER JOIN tblcustomer AS customer
+                    ON payment.customer_id = customer.customer_id
+                    WHERE payment.rental_id = ?";
+            $qry = $conn->prepare($sql);
+            $qry->execute([$rental_id]);
+            $payments = $qry->fetchAll(PDO::FETCH_ASSOC);
+        } catch (PDOException $e) {
+            echo "Error: " . $e->getMessage();
+        }
         ?>
       <!-- Default box -->
       <div class="card">
@@ -48,22 +68,13 @@
               <a href="../rental/rental.php">
                   <button class="btn btn-default">Atras</button>
               </a>
-          <?php
-          if ($qry->num_rows==0) {
-              echo "
-                <button class='btn btn-info' data-toggle='modal' data-target='#add-payment'>
-                    <i class='nav-icon fas fa-plus'></i> Add Payment
-                </button>
-               ";
-          } 
-          ?>
           </div>
         <div class="card-body">
             <table id="table1" class="table table-hover table-sm">
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Monto del pagot</th>
+                        <th>Monto del pago</th>
                         <th>Agregar cargos</th>
                         <th>Fecha de pago</th>
                         <th>Prueba de pago</th>
@@ -72,18 +83,14 @@
                 </thead>
                 <tbody>
                 <?php
-                    $cn = new mysqli($host, $user, $password, $dbname);
-                    $sql="SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
-                    FROM tblpayment AS payment
-                    INNER JOIN tblcustomer AS customer
-                    ON payment.customer_id = customer.customer_id
-                    WHERE payment.rental_id = ?";
-                    $qry=$cn->prepare($sql);
-                    $qry->bind_param("s", $rental_id);
-                    $qry->execute();
-                    $qry->bind_result($payment_id, $rental_id, $payment_amount, $add_charges, $payment_date, $proof_of_payment, $customer_id, $customer_name);
-                    $qry->store_result();
-                    while ($qry->fetch()){
+                    foreach ($payments as $payment) {
+                        $payment_id = $payment['payment_id'];
+                        $payment_amount = $payment['payment_amount'];
+                        $add_charges = $payment['add_charges'];
+                        $payment_date = $payment['payment_date'];
+                        $proof_of_payment = $payment['proof_of_payment'];
+                        $customer_name = $payment['customer_name'];
+                        
                         echo "<tr>
                             <td>
                                 <button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-payment-$payment_id'>
@@ -99,6 +106,7 @@
                             </td>
                             <td>$customer_name</td>
                             </tr>";
+                        
                         include 'view-proof_of_payment-modal.php';
                         include 'delete-modal.php';
                     }

@@ -11,7 +11,7 @@ if(isset($_POST['add-customer'])){
         $filename = basename($_FILES["profile_image"]["name"]);
         $newfilename = $filename.$newfilename;
         
-        $customer_id = null;
+        
         $customer_name = $_POST['customer_name'];
         $address = $_POST['address'];
         $contact = $_POST['contact'];
@@ -29,18 +29,17 @@ if(isset($_POST['add-customer'])){
 
         $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
 
-        $sql = "INSERT INTO tblcustomer VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO tblcustomer (customer_name, address, contact, profile_image, fb_account, username, password, admin_id, account_status) VALUES (?,?,?,?,?,?,?,?,?)";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(1, $customer_id);
-        $stmt->bindParam(2, $customer_name);
-        $stmt->bindParam(3, $address);
-        $stmt->bindParam(4, $contact);
-        $stmt->bindParam(5, $profile_image);
-        $stmt->bindParam(6, $fb_account);
-        $stmt->bindParam(7, $username);
-        $stmt->bindParam(8, $password);
-        $stmt->bindParam(9, $admin_id);
-        $stmt->bindParam(10, $account_status);
+        $stmt->bindParam(1, $customer_name);
+        $stmt->bindParam(2, $address);
+        $stmt->bindParam(3, $contact);
+        $stmt->bindParam(4, $profile_image);
+        $stmt->bindParam(5, $fb_account);
+        $stmt->bindParam(6, $username);
+        $stmt->bindParam(7, $password);
+        $stmt->bindParam(8, $admin_id);
+        $stmt->bindParam(9, $account_status);
         
         if ($stmt->execute()){
             echo "<script>window.location.href = 'customer.php?status=success';</script>";

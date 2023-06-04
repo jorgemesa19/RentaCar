@@ -31,31 +31,34 @@
         $dbname = "bd_rentaCar"; // Nombre de la base de datos
 
         $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+
 
         $sql="SELECT image_id, image_description, image, car_id FROM tblcarimage WHERE car_id = ?";
         $qry=$conn->prepare($sql);
-        $qry->bind_param("s", $car_id);
+        $qry->bindParam(1, $car_id); // Corregimos el enlace del parámetro
         $qry->execute();
-        $qry->bind_result($image_id, $image_description, $image, $car_id);
-        $qry->store_result();
-        if ($_SESSION['user_type'] == "Administrator"){
-            $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-carimage'><i class='fa fa-plus'></i> Add</button>";
-            $delete_btn = "<button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-carimage-$image_id'>
-                            <i class='nav-icon fas fa-trash'></i>
-                            </button>";
+        $result = $qry->fetchAll(PDO::FETCH_ASSOC);
+        foreach ($result as $row) {
+            $image_id = $row['image_id'];
+            $image_description = $row['image_description'];
+            $image = $row['image'];
+            $current_car_id = $row['car_id']; // Utilizamos una variable diferente para almacenar el valor del parámetro
+
+            echo "<div class='col-md-3'>
+                    <img class='img-fluid mb-3 elevation-1 img-bordered-sm' src='../uploads/$image' alt='Photo'>
+                    <p>$image_description</p>
+                    <button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-carimage-$image_id'>
+                        <i class='nav-icon fas fa-trash'></i>
+                    </button>
+                </div>";
+
+            include 'delete-modal.php';
         }
-        if ($_SESSION['user_type'] == "Owner"){
+
+        if ($_SESSION['user_type'] == "Administrator" || $_SESSION['user_type'] == "Owner"){
             $add_btn = "<button class='btn btn-info' data-toggle='modal' data-target='#add-carimage'><i class='fa fa-plus'></i> Add</button>";
-            $delete_btn = "<button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-carimage-$image_id'>
-                            <i class='nav-icon fas fa-trash'></i>
-                            </button>";
-        }
-        if ($_SESSION['user_type'] == "Customer"){
+        } else {
             $add_btn = "";
-            $delete_btn = "";
         }
         ?>
       <!-- Default box -->
@@ -69,16 +72,23 @@
         <div class="card-body">
             <div class='row'>
             <?php
-                while ($qry->fetch()){
+                foreach ($result as $row) {
+                    $image_id = $row['image_id'];
+                    $image_description = $row['image_description'];
+                    $image = $row['image'];
+                    $current_car_id = $row['car_id'];
+
                     echo "<div class='col-md-3'>
                             <img class='img-fluid mb-3 elevation-1 img-bordered-sm' src='../uploads/$image' alt='Photo'>
                             <p>$image_description</p>
-                            $delete_btn
-                        </div>
-                            ";
+                            <button class='btn elevation-1 btn-sm btn-danger btn-xs' data-toggle='modal' data-target='#delete-carimage-$image_id'>
+                                <i class='nav-icon fas fa-trash'></i>
+                            </button>
+                        </div>";
+
                     include 'delete-modal.php';
                 }
-                
+
             ?>
             </div>
         </div>

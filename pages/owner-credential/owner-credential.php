@@ -62,7 +62,14 @@
                     $credential_name = $row['credential_name'];
                     $file_upload = $row['file_upload'];
 
-                    $file_upload_text = substr($file_upload,0,20)."...";
+                    if (is_resource($file_upload)) {
+                      // Realizar alguna acción para obtener el contenido del recurso, como leer el archivo
+                      // y asignar el contenido a $file_upload como una cadena de texto
+                      $file_content = stream_get_contents($file_upload);
+                      $file_upload = $file_content;
+                  }
+              
+                  $file_upload_text = substr($file_upload, 0, 20)."...";
                     echo "<tr>
                         <td class='text-center'>
                             <button class='btn elevation-1 btn-sm btn-success btn-xs' data-toggle='modal' data-target='#edit-ownercredential-$owner_credential_id'>

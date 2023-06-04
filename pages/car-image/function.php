@@ -10,25 +10,22 @@ if (isset($_POST['add-carimage'])) {
     $newfilename = round(microtime(true)) . '.' . end($temp);
 
     $target_dir = "../uploads/";
-
     $target_file = $target_dir . basename($_FILES["image"]["name"]);
 
     if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file . $newfilename)) {
         $filename = basename($_FILES["image"]["name"]);
         $newfilename = $filename . $newfilename;
 
-        $image_id = null;
         $image_description = $_POST['image_description'];
         $image = $newfilename;
         $car_id = $_GET['car_id'];
 
         $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-        $sql = "INSERT INTO tblcarimage VALUES (?,?,?,?)";
+        $sql = "INSERT INTO tblcarimage (image_description, image, car_id) VALUES (?, ?, ?)";
         $qry = $conn->prepare($sql);
-        $qry->bindParam(1, $image_id);
-        $qry->bindParam(2, $image_description);
-        $qry->bindParam(3, $image);
-        $qry->bindParam(4, $car_id);
+        $qry->bindParam(1, $image_description);
+        $qry->bindParam(2, $image);
+        $qry->bindParam(3, $car_id);
         if ($qry->execute()) {
             echo "<script>window.location.href = 'car-image.php?car_id=$car_id&car_name=$car_name&status=success';</script>";
         } else {
@@ -38,6 +35,7 @@ if (isset($_POST['add-carimage'])) {
         echo "<script>window.location.href = 'car-image.php?car_id=$car_id&car_name=$car_name&status=failed-upload';</script>";
     }
 }
+
 
 if (isset($_POST['delete-carimage'])) {
 

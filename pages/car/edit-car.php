@@ -33,14 +33,13 @@
             $password = "9090"; // Contraseña de la base de datos
             $dbname = "bd_rentaCar"; // Nombre de la base de datos
 
-            $cn = new mysqli($host, $user, $password, $dbname);
+            $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+            $car_id = $_GET['car_id'];
             $sql = "SELECT car_id, car_name, description, car_model_year, car_brand, color, capacity, plate_number, rate, owner_id, status, proof_of_ownership FROM tblcar WHERE car_id = ?";
-            $qry = $cn->prepare($sql);
-            $qry->bind_param("s", $_GET['car_id']);
-            $qry->execute();
-            $qry->bind_result($car_id, $car_name, $description, $car_model_year, $car_brand, $color, $capacity, $plate_number, $rate, $owner_id, $status, $proof_of_ownership);
-            $qry->store_result();
-            $qry->fetch();
+            $stmt = $conn->prepare($sql);
+            $stmt->execute([$car_id]);
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+            extract($row);
             ?>
             
             <div class="form-group">
@@ -87,26 +86,16 @@
                 <label for="owner_id">Owner</label>
                 <select class='custom-select form-control-border' name="owner_id">
                     <?php
-                    $cn = new mysqli($host, $user, $password, $dbname);
-                    $sql = "SELECT owner_id, owner_name FROM tblowner WHERE owner_id = ?";
-                    $qry = $cn->prepare($sql);
-                    $qry->bind_param("s", $owner_id);
-                    $qry->execute();
-                    $qry->bind_result($owner_id, $owner_name);
-                    $qry->store_result();
-                    $qry->fetch();
-                    echo " <option value='$owner_id'>$owner_name</option>";
+                    $stmt = $conn->prepare("SELECT owner_id, owner_name FROM tblowner WHERE owner_id = ?");
+                    $stmt->execute([$owner_id]);
+                    $owner = $stmt->fetch(PDO::FETCH_ASSOC);
+                    echo "<option value='$owner[owner_id]'>$owner[owner_name]</option>";
                     
-                    
-                    $cn = new mysqli($host, $user, $password, $dbname);
-                    $sql = "SELECT owner_id, owner_name FROM tblowner WHERE owner_id <> ?";
-                    $qry = $cn->prepare($sql);
-                    $qry->bind_param("s", $owner_id);
-                    $qry->execute();
-                    $qry->bind_result($owner_id, $owner_name);
-                    $qry->store_result();
-                    while ($qry->fetch()){
-                        echo " <option value='$owner_id'>$owner_name</option>";
+                    $stmt = $conn->prepare("SELECT owner_id, owner_name FROM tblowner WHERE owner_id <> ?");
+                    $stmt->execute([$owner_id]);
+                    $owners = $stmt->fetchAll(PDO::FETCH_ASSOC);
+                    foreach ($owners as $owner) {
+                        echo "<option value='$owner[owner_id]'>$owner[owner_name]</option>";
                     }
                     ?>
                 </select>

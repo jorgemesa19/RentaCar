@@ -20,7 +20,8 @@ if (isset($_POST['add-payment'])) {
         $filename = basename($_FILES["proof_of_payment"]["name"]);
         $newfilename = $filename . $newfilename;
 
-        $payment_id = null;
+        // Elimina la asignación de $payment_id = null;
+
         $rental_id = $_POST['rental_id'];
         $payment_amount = $_POST['payment_amount'];
         $add_charges = $_POST['add_charges'];
@@ -28,15 +29,15 @@ if (isset($_POST['add-payment'])) {
         $proof_of_payment = $newfilename;
         $customer_id = $_POST['customer_id'];
 
-        $sql = "INSERT INTO tblpayment VALUES (?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO tblpayment(payment_id, rental_id, payment_amount, add_charges, payment_date, proof_of_payment, customer_id) VALUES (nextval('payment_id_seq'), ?, ?, ?, ?, ?, ?)";
         $qry = $conn->prepare($sql);
-        $qry->bindParam(1, $payment_id);
-        $qry->bindParam(2, $rental_id);
-        $qry->bindParam(3, $payment_amount);
-        $qry->bindParam(4, $add_charges);
-        $qry->bindParam(5, $payment_date);
-        $qry->bindParam(6, $proof_of_payment);
-        $qry->bindParam(7, $customer_id);
+        $qry->bindParam(1, $rental_id);
+        $qry->bindParam(2, $payment_amount);
+        $qry->bindParam(3, $add_charges);
+        $qry->bindParam(4, $payment_date);
+        $qry->bindParam(5, $proof_of_payment);
+        $qry->bindParam(6, $customer_id);
+
 
         if ($qry->execute()) {
 

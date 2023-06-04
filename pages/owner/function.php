@@ -5,7 +5,6 @@ $conn = new PDO("pgsql:host=" . $host . ";dbname=" . $dbname, $user, $password);
 if (!$conn) {
     die("Connection failed: " . print_r($conn->errorInfo(), true));
 }
-
 if (isset($_POST['add-owner'])) {
     $temp = explode(".", $_FILES["profile_image"]["name"]);
     $newfilename = round(microtime(true)) . '.' . end($temp);
@@ -18,7 +17,6 @@ if (isset($_POST['add-owner'])) {
         $filename = basename($_FILES["profile_image"]["name"]);
         $newfilename = $filename . $newfilename;
 
-        $owner_id = null;
         $owner_name = $_POST['owner_name'];
         $address = $_POST['address'];
         $contact = $_POST['contact'];
@@ -29,9 +27,9 @@ if (isset($_POST['add-owner'])) {
         $admin_id = $_SESSION['user_id'];
         $account_status = $_POST['account_status'];
 
-        $sql = "INSERT INTO tblowner VALUES (?,?,?,?,?,?,?,?,?,?)";
+        $sql = "INSERT INTO tblowner (owner_name, address, contact, profile_image, fb_account, username, password, admin_id, account_status) VALUES (?,?,?,?,?,?,?,?,?)";
         $qry = $conn->prepare($sql);
-        $qry->execute([$owner_id, $owner_name, $address, $contact, $profile_image, $fb_account, $username, $password, $admin_id, $account_status]);
+        $qry->execute([$owner_name, $address, $contact, $profile_image, $fb_account, $username, $password, $admin_id, $account_status]);
 
         if ($qry->rowCount() > 0) {
             echo "<script>window.location.href = 'owner.php?status=success';</script>";
@@ -41,8 +39,8 @@ if (isset($_POST['add-owner'])) {
     } else {
         echo "<script>window.location.href = 'owner.php?status=failed-upload';</script>";
     }
-
 }
+
 
 if (isset($_POST['edit-owner'])) {
 

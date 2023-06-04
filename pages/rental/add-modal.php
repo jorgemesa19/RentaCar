@@ -27,14 +27,13 @@
                             $user = "postgres";
                             $password = "9090";
                             $dbname = "bd_rentaCar";
-                            
-                            $cn = new mysqli ($host, $user, $password, $dbname);
-                            $sql="SELECT car_id, car_name FROM tblcar WHERE status = 1";
-                            $qry=$cn->prepare($sql);
-                            $qry->execute();
-                            $qry->bind_result($car_id, $car_name);
-                            $qry->store_result();
-                            while ($qry->fetch()){
+                            $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
+                            $sql = "SELECT car_id, car_name FROM tblcar WHERE status = 1";
+                            $stmt = $conn->query($sql);
+                            while ($row = $stmt->fetch()) {
+                                $car_id = $row['car_id'];
+                                $car_name = $row['car_name'];
                                 echo "<option value='$car_id'>$car_name</option>";
                             }
                             ?>
@@ -45,19 +44,17 @@
                         <label for="customer_id">Customer</label>
                         <select class='custom-select form-control-border' name="customer_id">
                             <?php
-                            $cn = new mysqli ($host, $user, $password, $dbname);
-                            if ($_SESSION['user_type'] == "Administrator"){
-                                $sql="SELECT customer_id, customer_name FROM tblcustomer";
+                            if ($_SESSION['user_type'] == "Administrator") {
+                                $sql = "SELECT customer_id, customer_name FROM tblcustomer";
                             }
-                            if ($_SESSION['user_type'] == "Customer"){
+                            if ($_SESSION['user_type'] == "Customer") {
                                 $customer_id = $_SESSION['user_id'];
-                                $sql="SELECT customer_id, customer_name FROM tblcustomer WHERE customer_id = $customer_id";
+                                $sql = "SELECT customer_id, customer_name FROM tblcustomer WHERE customer_id = $customer_id";
                             }
-                            $qry=$cn->prepare($sql);
-                            $qry->execute();
-                            $qry->bind_result($customer_id, $customer_name);
-                            $qry->store_result();
-                            while ($qry->fetch()){
+                            $stmt = $conn->query($sql);
+                            while ($row = $stmt->fetch()) {
+                                $customer_id = $row['customer_id'];
+                                $customer_name = $row['customer_name'];
                                 echo "<option value='$customer_id'>$customer_name</option>";
                             }
                             ?>
