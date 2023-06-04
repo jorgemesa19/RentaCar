@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Payments</h1>
+            <h1>Pagos</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -28,7 +28,12 @@
         include "add-payment-modal.php";
         include "function.php";
         
-        $cn = new mysqli (HOST, USER, PW, DB);
+        $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+        $user = "postgres"; // Nombre de usuario de la base de datos
+        $password = "9090"; // Contraseña de la base de datos
+        $dbname = "bd_rentaCar"; // Nombre de la base de datos
+        
+        $cn = new mysqli($host, $user, $password, $dbname);
         $sql="SELECT rental_id FROM tblpayment WHERE rental_id = ?";
         $qry=$cn->prepare($sql);
         $qry->bind_param("s", $rental_id);
@@ -41,7 +46,7 @@
       <div class="card">
           <div class='card-header'>
               <a href="../rental/rental.php">
-                  <button class="btn btn-default">Go Back</button>
+                  <button class="btn btn-default">Atras</button>
               </a>
           <?php
           if ($qry->num_rows==0) {
@@ -58,16 +63,16 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Payment Amount</th>
-                        <th>Add Charges</th>
-                        <th>Payment Date</th>
-                        <th>Proof of Payment</th>
-                        <th>Customer</th>
+                        <th>Monto del pagot</th>
+                        <th>Agregar cargos</th>
+                        <th>Fecha de pago</th>
+                        <th>Prueba de pago</th>
+                        <th>Cliente</th>
                     </tr>
                 </thead>
                 <tbody>
                 <?php
-                    $cn = new mysqli (HOST, USER, PW, DB);
+                    $cn = new mysqli($host, $user, $password, $dbname);
                     $sql="SELECT payment.payment_id, payment.rental_id, payment.payment_amount, payment.add_charges, payment.payment_date, payment.proof_of_payment, payment.customer_id, customer.customer_name
                     FROM tblpayment AS payment
                     INNER JOIN tblcustomer AS customer

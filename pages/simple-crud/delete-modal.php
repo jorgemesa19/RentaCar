@@ -5,7 +5,7 @@
             <div class="modal-body">
                 <input type="text" class="form-control" name="s_crud_id" value="<?php echo $s_crud_id ?>" hidden>
                 <input type="text" class="form-control" name="text" value="<?php echo $text ?>" hidden>
-                Are you sure you want to delete <b><?php echo $text;?></b>?
+                Esta seguro de que quiere eliminar <b><?php echo $text;?></b>?
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

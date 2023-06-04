@@ -1,85 +1,51 @@
-<?php 
-if(isset($_POST['add-rental'])){
-    
-    $rental_id= null;
-    $rental_date= $_POST['rental_date'];
-    $rental_time= $_POST['rental_time'];
-    $return_date= $_POST['return_date'];
-    $car_id= $_POST['car_id'];
-    $customer_id= $_POST['customer_id'];
-    $rental_status= $_POST['rental_status'];
-    
-    $cn = new mysqli (HOST, USER, PW, DB);
-    $sql="SELECT owner_id FROM tblcar WHERE car_id = $car_id";
-    $qry=$cn->prepare($sql);
-    $qry->execute();
-    $qry->bind_result($owner_id);
-    $qry->store_result();
-    $qry->fetch();
-    
-        
-    $cn = new mysqli (HOST, USER, PW, DB);
-    $sql="INSERT INTO tblrental VALUES (?,?,?,?,?,?,?,?)";
-    $qry=$cn->prepare($sql);
-    $qry->bind_param("ssssssss", $rental_id, $rental_date, $rental_time, $return_date, $owner_id, $car_id, $customer_id, $rental_status);
-    if ($qry->execute()){
-        
-        $cn = new mysqli (HOST, USER, PW, DB);
-        $sql="UPDATE tblcar SET status = 0 WHERE car_id = $car_id";
-        $qry=$cn->prepare($sql);
-        $qry->execute();
-        
-        echo "<script>window.location.href = 'rental.php?status=success';</script>";        
-    }
-    else {
-        echo "<script>window.location.href = 'rental.php?status=failed';</script>";
-    } 
-    
-}
+<?php
+// Parámetros de conexión a la base de datos
+$host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+$user = "postgres"; // Nombre de usuario de la base de datos
+$password = "9090"; // Contraseña de la base de datos
+$dbname = "bd_rentaCar"; // Nombre de la base de datos
 
-if(isset($_POST['delete-rental'])){
-    
-    $rental_id= $_POST['rental_id'];
-         
-        $cn = new mysqli (HOST, USER, PW, DB);
-        $sql="DELETE FROM tblrental WHERE rental_id=?";
-        $qry=$cn->prepare($sql);
-        $qry->bind_param("s", $rental_id);
-        if ($qry->execute()){
-            
-            $cn = new mysqli (HOST, USER, PW, DB);
-            $sql="SELECT COUNT(payment_id) FROM tblpayment WHERE rental_id = $rental_id";
-            $qry=$cn->prepare($sql);
-            $qry->execute();
-            $qry->bind_result($ct_payment_id);
-            $qry->store_result();
-            $qry->fetch();
-            if ($ct_payment_id == 1){
-                $cn = new mysqli (HOST, USER, PW, DB);
-                $sql="SELECT proof_of_payment FROM tblpayment WHERE rental_id = $rental_id";
-                $qry=$cn->prepare($sql);
-                $qry->execute();
-                $qry->bind_result($proof_of_payment);
-                $qry->store_result();
-                $qry->fetch();
-                
-                if ($proof_of_payment != 'img-default.jpg'){
-                //delete old proof_of_payment
-                unlink("../uploads/$proof_of_payment");
-                }
-                
-                $cn = new mysqli (HOST, USER, PW, DB);
-                $sql="DELETE FROM tblpayment WHERE rental_id=?";
-                $qry=$cn->prepare($sql);
-                $qry->bind_param("s", $rental_id);
-                $qry->execute();
-                
-                echo "<script>window.location.href = 'rental.php?status=success';</script>"; 
-            }         
-        }
-        else {
-            echo "<script>window.location.href = 'rental.php?status=failed';</script>";
-        }     
-}
+// Establecer la conexión
+$conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+
+// Verificar si la conexión fue exitosa
 
 ?>
+
+<div class='modal fade' id='delete-rental-<?php echo $rental_id; ?>'>
+    <div class="modal-dialog modal-md">
+        <form method="post" class="form-horizontal">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <?php
+                    // Obtener el ID de alquiler
+                    $rental_id = $_POST['rental_id'] ?? '';
+
+                    // Verificar si se envió el formulario de eliminación
+                    if (isset($_POST['delete-rental'])) {
+                        // Realizar la lógica de eliminación de alquiler aquí
+                        // ...
+                        // Ejemplo: Eliminar alquiler de la base de datos
+                        $query = "DELETE FROM rentals WHERE id = :rental_id";
+                        $statement = $conn->prepare($query);
+                        $statement->bindParam(':rental_id', $rental_id);
+                        $statement->execute();
+                        // ...
+                        echo "El alquiler ha sido eliminado.";
+                    }
+                    ?>
+
+                    <input type="text" class="form-control" name="rental_id" value="<?php echo $rental_id ?>" hidden>
+                    Are you sure you want to delete?
+                </div>
+                <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <input type="submit" class="btn btn-danger" name="delete-rental" value="Delete">
+                </div>
+            </div>
+        </form>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

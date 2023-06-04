@@ -23,14 +23,19 @@
                         <label for="car_id">Car</label>
                         <select class='custom-select form-control-border' name="car_id">
                             <?php
-                            $cn = new mysqli (HOST, USER, PW, DB);
+                            $host = "localhost";
+                            $user = "postgres";
+                            $password = "9090";
+                            $dbname = "bd_rentaCar";
+                            
+                            $cn = new mysqli ($host, $user, $password, $dbname);
                             $sql="SELECT car_id, car_name FROM tblcar WHERE status = 1";
                             $qry=$cn->prepare($sql);
                             $qry->execute();
                             $qry->bind_result($car_id, $car_name);
                             $qry->store_result();
                             while ($qry->fetch()){
-                                echo " <option value='$car_id'>$car_name</option>";
+                                echo "<option value='$car_id'>$car_name</option>";
                             }
                             ?>
                         </select>
@@ -40,7 +45,7 @@
                         <label for="customer_id">Customer</label>
                         <select class='custom-select form-control-border' name="customer_id">
                             <?php
-                            $cn = new mysqli (HOST, USER, PW, DB);
+                            $cn = new mysqli ($host, $user, $password, $dbname);
                             if ($_SESSION['user_type'] == "Administrator"){
                                 $sql="SELECT customer_id, customer_name FROM tblcustomer";
                             }
@@ -53,7 +58,7 @@
                             $qry->bind_result($customer_id, $customer_name);
                             $qry->store_result();
                             while ($qry->fetch()){
-                                echo " <option value='$customer_id'>$customer_name</option>";
+                                echo "<option value='$customer_id'>$customer_name</option>";
                             }
                             ?>
                         </select>

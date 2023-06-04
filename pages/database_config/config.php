@@ -9,9 +9,9 @@ $dbname = "bd_rentaCar"; // Nombre de la base de datos
 $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
 
 // Verificar si la conexión fue exitosa
-if ($conn) {
-    echo "Conexión exitosa a la base de datos!";
-} else {
-    echo "Error al conectar a la base de datos.";
-}
+//if ($conn) {
+//    echo "Conexión exitosa a la base de datos!";
+//} else {
+//    echo "Error al conectar a la base de datos.";
+//}
 ?>

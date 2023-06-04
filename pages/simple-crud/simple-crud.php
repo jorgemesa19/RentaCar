@@ -42,13 +42,20 @@
                 </thead>
                 <tbody>
                 <?php
-                $cn = new mysqli (HOST, USER, PW, DB);
-                $sql="SELECT s_crud_id, text, text_area, dropdown FROM tbl_simple_crud";
-                $qry=$cn->prepare($sql);
+                $host = "localhost"; // Nombre del servidor donde está alojada la base de datos
+                $user = "postgres"; // Nombre de usuario de la base de datos
+                $password = "9090"; // Contraseña de la base de datos
+                $dbname = "bd_rentaCar"; // Nombre de la base de datos
+
+                // Establecer la conexión
+                $cn = new mysqli($host, $user, $password, $dbname);
+
+                $sql = "SELECT s_crud_id, text, text_area, dropdown FROM tbl_simple_crud";
+                $qry = $cn->prepare($sql);
                 $qry->execute();
                 $qry->bind_result($s_crud_id, $text, $text_area, $dropdown);
                 $qry->store_result();
-                while ($qry->fetch()){
+                while ($qry->fetch()) {
                     echo "<tr>
                         <td class='text-center'>
                             <button class='btn elevation-1 btn-sm btn-success btn-xs' data-toggle='modal' data-target='#edit-simple_crud-$s_crud_id'>

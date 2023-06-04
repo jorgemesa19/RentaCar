@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Payments</h1>
+            <h1>Pagos</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -26,11 +26,11 @@
             <table id="table1" class="table table-hover table-sm">
                 <thead>
                     <tr>
-                        <th>Payment Amount</th>
-                        <th>Add Charges</th>
-                        <th>Payment Date</th>
-                        <th>Proof of Payment</th>
-                        <th>Customer</th>
+                        <th>Monto del pago</th>
+                        <th>Agregar cargos</th>
+                        <th>Fecha de pago</th>
+                        <th>Prueba de pago</th>
+                        <th>Cliente</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -43,11 +43,13 @@
 
                   // Establecer la conexión
                   try {
-                      $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-                      $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    // Establecer la conexión
+                    $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
+                    // Establecer el modo de error de PDO a excepciones
+                    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                    echo "";
                   } catch (PDOException $e) {
-                      echo "Error al conectar a la base de datos: " . $e->getMessage();
-                      exit;
+                    echo "" . $e->getMessage();
                   }
 
                   if ($_SESSION['user_type'] == "Administrator") {
