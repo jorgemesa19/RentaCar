@@ -36,22 +36,22 @@
           <?php echo $add_btn;?>
         </div>
         <div class="card-body">
-            <table id="table1" class="table table-hover table-sm" style="table-layout: fixed; width:105%;">
+            <table id="table1" class="table table-hover table-sm" style="table-layout: auto; max-width:100%;">
                 <thead>
-                    <tr>
-                        <th></th>
-                        <th>Nombre del vehiculo</th>
-                        <th>Descripción</th>
-                        <th>Modelo</th>
-                        <th>Marca</th>
-                        <th>Color</th>
-                        <th>Capacidad</th>
-                        <th>Nro. de placa</th>
-                        <th>Calificación</th>
-                        <th>Propietario</th>
-                        <th>Estado</th>
-                        <th>Prueba de propiedad</th>
-                    </tr>
+                  <tr>
+                      <th></th>
+                      <th style="text-align: center; vertical-align: middle;">Nombre del vehiculo</th>
+                      <th style="text-align: center; vertical-align: middle;">Descripción</th>
+                      <th style="text-align: center; vertical-align: middle;">Modelo</th>
+                      <th style="text-align: center; vertical-align: middle;">Marca</th>
+                      <th style="text-align: center; vertical-align: middle;">Color</th>
+                      <th style="text-align: center; vertical-align: middle;">Capacidad</th>
+                      <th style="text-align: center; vertical-align: middle;">Nro. de placa</th>
+                      <th style="text-align: center; vertical-align: middle;">Calificación</th>
+                      <th style="text-align: center; vertical-align: middle;">Propietario</th>
+                      <th style="text-align: center; vertical-align: middle;">Estado</th>
+                      <th style="text-align: center; vertical-align: middle;">Prueba de propiedad</th>
+                  </tr>
                 </thead>
                 <tbody>
                 <?php
@@ -67,7 +67,7 @@
                     FROM tblcar AS car
                     INNER JOIN tblowner AS owner
                     ON car.owner_id = owner.owner_id
-                    LIMIT 50"; // LIMITAR LOS DATOS QUE CARGARÁ EL APARTADO DE AUTOS YA QUE CON TODOS NO PUEDE, SE BLOQUE LA PÁG
+                    LIMIT 100"; // LIMITAR LOS DATOS QUE CARGARÁ EL APARTADO DE AUTOS YA QUE CON TODOS NO PUEDE, SE BLOQUE LA PÁG
                 }
                 if ($_SESSION['user_type'] == "Owner"){
                     $owner_id = $_SESSION['user_id'];
@@ -76,14 +76,14 @@
                     INNER JOIN tblowner AS owner
                     ON car.owner_id = owner.owner_id
                     WHERE owner.owner_id = $owner_id
-                    LIMIT 50"; // LIMITAR LOS DATOS QUE CARGARÁ EL APARTADO DE AUTOS YA QUE CON TODOS NO PUEDE, SE BLOQUE LA PÁG";
+                    LIMIT 100"; // LIMITAR LOS DATOS QUE CARGARÁ EL APARTADO DE AUTOS YA QUE CON TODOS NO PUEDE, SE BLOQUE LA PÁG";
                 }
                 if ($_SESSION['user_type'] == "Customer"){
                     $sql="SELECT car.car_id, car.car_name, car.description, car.car_model_year, car.car_brand, car.color, car.capacity, car.plate_number, car.rate, car.owner_id, car.status, car.proof_of_ownership, owner.owner_name 
                     FROM tblcar AS car
                     INNER JOIN tblowner AS owner
                     ON car.owner_id = owner.owner_id
-                    LIMIT 50"; // LIMITAR LOS DATOS QUE CARGARÁ EL APARTADO DE AUTOS YA QUE CON TODOS NO PUEDE, SE BLOQUE LA PÁG";
+                    LIMIT 100"; // LIMITAR LOS DATOS QUE CARGARÁ EL APARTADO DE AUTOS YA QUE CON TODOS NO PUEDE, SE BLOQUE LA PÁG";
                 }
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
@@ -107,11 +107,11 @@
                     if ($_SESSION['user_type'] == "Administrator"){
                          $action_btns = "
                             <a href='edit-car.php?car_id=$car_id'>
-                                    <button class='btn elevation-1 btn-success btn-xs'>
+                                    <button class='btn elevation-1 btn-success btn-xs' style='width:80px;>
                                         <i class='nav-icon fas fa-pen'></i> Editar
                                     </button> 
                                 </a>
-                                <button class='btn elevation-1 btn-danger btn-xs' data-toggle='modal' data-target='#delete-car-$car_id'>
+                                <button class='btn elevation-1 btn-danger btn-xs' data-toggle='modal' data-target='#delete-car-$car_id' style='width:80px;>
                                 <i class='nav-icon fas fa-trash'></i> Eliminar
                             </button>";
                         
@@ -119,11 +119,11 @@
                     if ($_SESSION['user_type'] == "Owner"){
                         $action_btns = "
                             <a href='edit-car.php?car_id=$car_id'>
-                                    <button class='btn elevation-1 btn-success btn-xs'>
+                                    <button class='btn elevation-1 btn-success btn-xs' style='width:80px;>
                                         <i class='nav-icon fas fa-pen'></i> Editar
                                     </button> 
                                 </a>
-                                <button class='btn elevation-1 btn-danger btn-xs' data-toggle='modal' data-target='#delete-car-$car_id'>
+                                <button class='btn elevation-1 btn-danger btn-xs' data-toggle='modal' data-target='#delete-car-$car_id' style='width:80px;>
                                 <i class='nav-icon fas fa-trash'></i> Eliminar
                             </button>";
                     }
@@ -140,12 +140,12 @@
                         <td class='text-center'>
                         $action_btns
                         <a href='../car-image/car-image.php?car_id=$car_id&car_name=$car_name'>
-                            <button class='btn elevation-1 btn-default btn-xs'>
+                            <button class='btn elevation-1 btn-default btn-xs' style='width:80px;'>
                                 <i class='nav-icon fas fa-eye'></i> Imágenes
                             </button> 
                         </a>
                         <a href='../car-review/car-review.php?car_id=$car_id&car_name=$car_name'>
-                            <button class='btn elevation-1 btn-default btn-xs'>
+                            <button class='btn elevation-1 btn-default btn-xs style='width:80px;'>
                                 <i class='nav-icon fas fa-eye'></i> Revisiones
                             </button> 
                         </a>
