@@ -36,7 +36,7 @@
           <?php echo $add_btn;?>
         </div>
         <div class="card-body">
-            <table id="table1" class="table table-hover table-sm" style="table-layout: auto; max-width:100%;">
+            <table id="table1" class="table table-hover table-sm" style="table-layout: fixed; max-width:100%; text-align: center; vertical-align: middle;">
                 <thead>
                   <tr>
                       <th></th>
