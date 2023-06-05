@@ -17,7 +17,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
-                    <input type="submit" class="btn btn-primary " id="add-carimage_btn" name="add-carimage" value="Save">
+                    <input type="submit" class="btn btn-primary " id="add-carimage_btn" name="add-carimage" value="Guardar">
                 </div>
             </div>
         </form>

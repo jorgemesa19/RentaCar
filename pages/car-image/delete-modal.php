@@ -9,7 +9,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <input type="submit" class="btn btn-danger" name="delete-carimage" value="Delete">
+              <input type="submit" class="btn btn-danger" name="delete-carimage" value="Eliminar">
             </div>
           </div>
             </form>

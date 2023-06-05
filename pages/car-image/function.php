@@ -19,6 +19,7 @@ if (isset($_POST['add-carimage'])) {
         $image_description = $_POST['image_description'];
         $image = $newfilename;
         $car_id = $_GET['car_id'];
+        $car_name = $_GET['car_name']; // Agrega esta línea para definir la variable $car_name
 
         $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
         $sql = "INSERT INTO tblcarimage (image_description, image, car_id) VALUES (?, ?, ?)";
@@ -38,8 +39,11 @@ if (isset($_POST['add-carimage'])) {
 
 
 if (isset($_POST['delete-carimage'])) {
-
     $image_id = $_POST['image_id'];
+
+    // Obtener el valor de car_id de la URL o el formulario
+    $car_id = $_GET['car_id']; // o $_POST['car_id'], dependiendo de cómo se pase el valor
+    $car_name = $_GET['car_name'];
 
     $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
     $sql = "DELETE FROM tblcarimage WHERE image_id=?";
@@ -57,6 +61,9 @@ if (isset($_POST['delete-carimage'])) {
         echo "<script>window.location.href = 'car-image.php?car_id=$car_id&car_name=$car_name&status=failed';</script>";
     }
 }
+
+
+
 
 if (isset($_POST['edit-image'])) {
     $temp = explode(".", $_FILES["image"]["name"]);
