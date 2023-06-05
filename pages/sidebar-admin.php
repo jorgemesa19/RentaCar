@@ -32,7 +32,7 @@
             <a href="../owner/owner.php" class="nav-link">
                 <i class="nav-icon fa  ion-android-contacts"></i>
                 <p>
-                    propietarios
+                    Propietarios
                 </p>
             </a>
         </li>

@@ -40,7 +40,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>nombre del vehiculo</th>
+                        <th>Nombre del vehiculo</th>
                         <th>Descripción</th>
                         <th>Modelo</th>
                         <th>Marca</th>
