@@ -66,7 +66,8 @@
                     $sql="SELECT car.car_id, car.car_name, car.description, car.car_model_year, car.car_brand, car.color, car.capacity, car.plate_number, car.rate, car.owner_id, car.status, car.proof_of_ownership, owner.owner_name 
                     FROM tblcar AS car
                     INNER JOIN tblowner AS owner
-                    ON car.owner_id = owner.owner_id";
+                    ON car.owner_id = owner.owner_id
+                    LIMIT 50"; // LIMITAR LOS DATOS QUE CARGARÁ EL APARTADO DE AUTOS YA QUE CON TODOS NO PUEDE, SE BLOQUE LA PÁG
                 }
                 if ($_SESSION['user_type'] == "Owner"){
                     $owner_id = $_SESSION['user_id'];
@@ -74,13 +75,15 @@
                     FROM tblcar AS car
                     INNER JOIN tblowner AS owner
                     ON car.owner_id = owner.owner_id
-                    WHERE owner.owner_id = $owner_id";
+                    WHERE owner.owner_id = $owner_id
+                    LIMIT 50"; // LIMITAR LOS DATOS QUE CARGARÁ EL APARTADO DE AUTOS YA QUE CON TODOS NO PUEDE, SE BLOQUE LA PÁG";
                 }
                 if ($_SESSION['user_type'] == "Customer"){
                     $sql="SELECT car.car_id, car.car_name, car.description, car.car_model_year, car.car_brand, car.color, car.capacity, car.plate_number, car.rate, car.owner_id, car.status, car.proof_of_ownership, owner.owner_name 
                     FROM tblcar AS car
                     INNER JOIN tblowner AS owner
-                    ON car.owner_id = owner.owner_id";
+                    ON car.owner_id = owner.owner_id
+                    LIMIT 50"; // LIMITAR LOS DATOS QUE CARGARÁ EL APARTADO DE AUTOS YA QUE CON TODOS NO PUEDE, SE BLOQUE LA PÁG";
                 }
                 $stmt = $conn->prepare($sql);
                 $stmt->execute();
@@ -138,7 +141,7 @@
                         $action_btns
                         <a href='../car-image/car-image.php?car_id=$car_id&car_name=$car_name'>
                             <button class='btn elevation-1 btn-default btn-xs'>
-                                <i class='nav-icon fas fa-eye'></i> Imagenes
+                                <i class='nav-icon fas fa-eye'></i> Imágenes
                             </button> 
                         </a>
                         <a href='../car-review/car-review.php?car_id=$car_id&car_name=$car_name'>
