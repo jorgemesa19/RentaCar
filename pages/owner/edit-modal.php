@@ -5,8 +5,8 @@
                 <div class="modal-body">
                     
                     <div class="form-group">
-                        <label for="owner_name">Nombre</label>
-                        <input type="text" class="form-control form-control-border" id="owner_name" name="owner_name" value="<?php echo $owner_name;?>" placeholder="Nombre del dueño" required>
+                        <label for="owner_name">Nombre del propietario</label>
+                        <input type="text" class="form-control form-control-border" id="owner_name" name="owner_name" value="<?php echo $owner_name;?>" placeholder="Nombre del propietario" required>
                     </div>
                     
                     <div class="form-group">
@@ -20,12 +20,12 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="fb_account">Cuenta de Facebook</label>
-                        <input type="text" class="form-control form-control-border" id="fb_account" name="fb_account" value="<?php echo $fb_account;?>" placeholder="Cuenta de FB" required>
+                        <label for="fb_account">Email</label>
+                        <input type="text" class="form-control form-control-border" id="fb_account" name="fb_account" value="<?php echo $fb_account;?>" placeholder="email" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="username">Usuario</label>
+                        <label for="username">Nombre de usuario</label>
                         <input type="text" class="form-control form-control-border" id="username" name="username" value="<?php echo $username;?>" placeholder="Nombre de usuario" required>
                         <div id="response_username"></div>
                     </div>

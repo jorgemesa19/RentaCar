@@ -23,7 +23,7 @@
                               </a>";
               }
               ?>
-            <h1>Customer Credential - <b><?php echo $customer_name; ?></b></h1>
+            <h1>Credenciales de <b><?php echo $customer_name; ?></b></h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -98,7 +98,7 @@
                             <button class='btn btn-xs btn-info elevation-1'><i class='nav-icon fas fa-download'></i> Descargar</button>
                             </a>
                             <button class='btn elevation-1 btn-sm btn-warning btn-xs' data-toggle='modal' data-target='#edit-file_upload-$credential_id'>
-                                <i class='nav-icon fas fa-pen'></i> Change FIle
+                                <i class='nav-icon fas fa-pen'></i> Cambiar archivo
                             </button>
                         </td>
                         </tr>";

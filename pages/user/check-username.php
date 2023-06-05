@@ -22,7 +22,7 @@ if(isset($_POST['username'])){
     $count = $result['cnt_username'];
         
     if($count > 0){
-        $response = "<span style='color: red;'>Already Exist</span>";
+        $response = "<span style='color: red;'>¡El usuario ingresado ya existe!</span>";
         echo "<script>
         document.getElementById('add-user_btn').disabled = true;
         document.getElementById('username').className = 'form-control form-control-border is-invalid';

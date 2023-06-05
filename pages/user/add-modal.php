@@ -5,19 +5,19 @@
             <div class="modal-body">                
                 <div class="form-group">
                     <label for="firstname">Primer nombre</label>
-                    <input type="text" class="form-control form-control-border" id="firstname" name="firstname" placeholder="First Name" required>
+                    <input type="text" class="form-control form-control-border" id="firstname" name="firstname" placeholder="Primer nombre" required>
                 </div>
                 <div class="form-group">
                     <label for="middlename">Segundo nombre</label>
-                    <input type="text" class="form-control form-control-border" id="middlename" name="middlename" placeholder="Middle Name" required>
+                    <input type="text" class="form-control form-control-border" id="middlename" name="middlename" placeholder="Segundo nombre" required>
                 </div>
                 <div class="form-group">
                     <label for="lastname">Apellidos</label>
-                    <input type="text" class="form-control form-control-border" id="lastname" name="lastname" placeholder="Last Name" required>
+                    <input type="text" class="form-control form-control-border" id="lastname" name="lastname" placeholder="Apellidos" required>
                 </div>
                 <div class="form-group">
                     <label for="contact">Nro. de contacto</label>
-                    <input type="text" class="form-control form-control-border" id="contact" name="contact" placeholder="Contact Number" oninput="checkNumber()" maxlength="11" required>
+                    <input type="text" class="form-control form-control-border" id="contact" name="contact" placeholder="Nro. de contacto" oninput="checkNumber()" maxlength="11" required>
                     <div id="response_contact"></div>
                 </div>
                 <div class="form-group">
@@ -27,24 +27,24 @@
                 </div>
                 <div class="form-group">
                     <label for="address">Dirección</label>
-                    <textarea class="form-control form-control-border" rows="3" id="address" name="address" placeholder="Address" required></textarea>
+                    <textarea class="form-control form-control-border" rows="3" id="address" name="address" placeholder="Dirección" required></textarea>
                 </div>
                 <div class="form-group">
-                    <label for="username">Usuario</label>
-                    <input type="text" class="form-control form-control-border" id="username" name="username" placeholder="Username" required>
+                    <label for="username">Nombre de usuario</label>
+                    <input type="text" class="form-control form-control-border" id="username" name="username" placeholder="Nombre de usuario" required>
                     <div id="response"></div>
                 </div>
                 <div class="form-group">
                     <label for="password">Contraseña</label>
-                    <input type="password" class="form-control form-control-border" id="password" name="password" placeholder="Password" required>
+                    <input type="password" class="form-control form-control-border" id="password" name="password" placeholder="Contraseña" required>
                 </div>
                 <div class="form-group">
-                    <label for="profile_picture">Avatar</label>
-                    <input type="file" class="form-control form-control-border" id="profile_picture" name="profile_picture" placeholder="Profile Picture" accept="image/*" required>
+                    <label for="profile_picture">Foto de perfil</label>
+                    <input type="file" class="form-control form-control-border" id="profile_picture" name="profile_picture" placeholder="Foto de perfil" accept="image/*" required>
                 </div>
                 <div class="form-group">
                     <label for="status">Estado</label>
-                    <select class='custom-select form-control-border' name="Estado">
+                    <select class='custom-select form-control-border' name="status">
                         <option value='1'>Activo</option>
                         <option value='0'>Inactivo</option>
                     </select>
@@ -78,7 +78,7 @@ uploadField2.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'File is not an Image'
+                title: '¡El archivo no es una imagen!'
                 })
                 });
 
@@ -98,7 +98,7 @@ uploadField2.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'La imagen es muy grande, máximo permitido de 2mb.'
+                title: '¡La imagen pesa más de 2mb!'
                 })
                 });
 

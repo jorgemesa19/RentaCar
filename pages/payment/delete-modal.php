@@ -16,11 +16,11 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                     <input type="text" class="form-control" name="payment_id" value="<?php echo $payment_id ?>" hidden>
                     <input type="text" class="form-control" name="rental_id" value="<?php echo $rental_id ?>" hidden>
                     <input type="text" name="old_proof_of_payment" value="<?php echo $proof_of_payment; ?>" hidden>
-                    Esta seguro de que quiere eliminar?
+                    ¿Está seguro de que quiere eliminar el pago de <?php echo $customer_name ?>?
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="submit" class="btn btn-danger" name="delete-payment" value="Delete">
+                    <input type="submit" class="btn btn-danger" name="delete-payment" value="Eliminar">
                 </div>
             </div>
         </form>

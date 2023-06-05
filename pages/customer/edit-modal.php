@@ -6,7 +6,7 @@
                     
                     <div class="form-group">
                         <label for="customer_name">Nombre del cliente</label>
-                        <input type="text" class="form-control form-control-border" id="customer_name" name="customer_name" value="<?php echo $customer_name;?>" placeholder="Nombre del cliente" required>
+                        <input type="text" class="form-control form-control-border" id="customer_name" name="Nombre del cliente" value="<?php echo $customer_name;?>" placeholder="Nombre del cliente" required>
                     </div>
                     
                     <div class="form-group">
@@ -20,8 +20,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="fb_account">Cuenta de FB</label>
-                        <input type="text" class="form-control form-control-border" id="fb_account" name="fb_account" value="<?php echo $fb_account;?>" placeholder="Cuenta de FB" required>
+                        <label for="fb_account">Email</label>
+                        <input type="text" class="form-control form-control-border" id="fb_account" name="fb_account" value="<?php echo $fb_account;?>" placeholder="Email" required>
                     </div>
                     
                     <div class="form-group">
@@ -56,7 +56,7 @@
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
                     <input type="text"  name="customer_id" value="<?php echo $customer_id;?>" hidden>
-                    <input type="submit" class="btn btn-primary " id="edit-customer_btn" name="edit-customer" value="Save">
+                    <input type="submit" class="btn btn-primary " id="edit-customer_btn" name="edit-customer" value="Guardar">
                 </div>
             </div>
         </form>

@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Usuario (Administrador)</h1>
+            <h1>Usuarios</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -27,7 +27,7 @@
       <!-- Default box -->
       <div class="card">
         <div class="card-header">
-          <button class="btn btn-info" data-toggle="modal" data-target="#add-user"><i class="fa fa-plus"></i> Agregar</button>
+          <button class="btn btn-info" data-toggle="modal" data-target="#add-user"><i class="fa fa-plus"></i> Añadir</button>
             
         </div>
         <div class="card-body">
@@ -36,13 +36,13 @@
                     <tr>
                         <th></th>
                         <th></th>
-                        <th>Nombre</th>
-                        <th>Contacto</th>
-                        <th>Email</th>
-                        <th>Dirección</th>
-                        <th>Usuario</th>
-                        <th>Contraseña</th>
-                        <th>Estado</th>
+                        <th style="text-align: center; vertical-align: middle;">Nombre</th>
+                        <th style="text-align: center; vertical-align: middle;">Contacto</th>
+                        <th style="text-align: center; vertical-align: middle;">Email</th>
+                        <th style="text-align: center; vertical-align: middle;">Dirección</th>
+                        <th style="text-align: center; vertical-align: middle;">Usuario</th>
+                        <th style="text-align: center; vertical-align: middle;">Contraseña</th>
+                        <th style="text-align: center; vertical-align: middle;">Estado</th>
                     </tr>
                 </thead>
                 <tbody>

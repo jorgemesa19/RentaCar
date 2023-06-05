@@ -28,25 +28,25 @@
               <form method="post">
                   <div class="card-body">
                       <div class="form-group">
-                          <label for="app_name">App Name</label>
-                          <input type="text" class="form-control form-control-border" id="app_name" name="app_name" placeholder="Parish Name" value="<?php echo $app_name;?>" required>
+                          <label for="app_name">Nombre de la app</label>
+                          <input type="text" class="form-control form-control-border" id="app_name" name="app_name" placeholder="Nombre de la app" value="<?php echo $app_name;?>" required>
                           <input type="text" name="setting_id" value="<?php echo $setting_id;?>" hidden>
                       </div>
                       <div class="form-group">
-                        <label for="address">Address</label>
-                        <textarea type="text" class="form-control form-control-border" id="address" name="address" placeholder="Address" required><?php echo $app_address;?></textarea>
+                        <label for="address">Dirección</label>
+                        <textarea type="text" class="form-control form-control-border" id="address" name="address" placeholder="Dirección" required><?php echo $app_address;?></textarea>
                       </div>
                       <div class="form-group">
-                          <label for="contact">Contact Number</label>
-                          <input type="text" class="form-control form-control-border" id="contact" name="contact" placeholder="Contact Number" value="<?php echo $contact;?>" required>
+                          <label for="contact">Número de contacto</label>
+                          <input type="text" class="form-control form-control-border" id="contact" name="contact" placeholder="Número de contacto" value="<?php echo $contact;?>" required>
                       </div>
                       <div class="form-group">
-                        <label for="about">About</label>
-                        <textarea type="text" class="form-control form-control-border" id="about" name="about" placeholder="About the App" required><?php echo $about;?></textarea>
+                        <label for="about">Acerca de</label>
+                        <textarea type="text" class="form-control form-control-border" id="about" name="about" placeholder="Acerca de" required><?php echo $about;?></textarea>
                       </div>
                   </div>
                   <div class="card-footer">
-                      <input type="submit" class="btn btn-primary" id="add-donation_btn" name="update-about" value="Save">
+                      <input type="submit" class="btn btn-primary" id="add-donation_btn" name="update-about" value="Guardar">
                   </div>
               </form>
             <!-- /.card-body -->          
@@ -59,7 +59,7 @@
               </div>
               <div class="card-footer">
                   <button class='btn btn-warning' data-toggle='modal' data-target='#edit-login_image'>
-                      <i class='nav-icon fas fa-pen'></i> Update Background Image</button>
+                      <i class='nav-icon fas fa-pen'></i> Actualizar imagen de fondo</button>
               </div>
             <!-- /.card-body -->          
           </div>
@@ -75,7 +75,7 @@
               </div>
               <div class="card-footer">
                   <button class='btn btn-warning' data-toggle='modal' data-target='#edit-logo'>
-                      <i class='nav-icon fas fa-pen'></i> Update Logo</button>
+                      <i class='nav-icon fas fa-pen'></i>Actualizar logo</button>
               </div>
             <!-- /.card-body -->          
           </div>

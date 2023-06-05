@@ -13,7 +13,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1>Imagenes del carro <b><?php echo $_GET['car_name']; ?></b></h1>
+              <h1>Imágenes del carro <b><?php echo $_GET['car_name']; ?></b></h1>
             </div>
           </div>
         </div><!-- /.container-fluid -->

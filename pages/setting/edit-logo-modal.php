@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cerrar</button>
-              <input type="submit" class="btn btn-primary btn-flat" name="edit-logo" value="Save">
+              <input type="submit" class="btn btn-primary btn-flat" name="edit-logo" value="Guardar">
             </div>
           </div>
             </form>
@@ -38,7 +38,7 @@ uploadField.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'File is not an Image'
+                title: '¡El archivo no es una imagen!'
                 })
                 });
 
@@ -58,7 +58,7 @@ uploadField.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'Image too large! Image must not exceed 2mb.'
+                title: '¡La imagen pesa más de 2mb!'
                 })
                 });
 

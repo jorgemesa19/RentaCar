@@ -75,11 +75,11 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Monto del pago (COP)</th>
-                        <th>Cargos adicionales (COP)</th>
-                        <th>Fecha de pago</th>
-                        <th>Comprobante de pago</th>
-                        <th>Cliente</th>
+                        <th style="text-align: center; vertical-align: middle;">Monto del pago (COP)</th>
+                        <th style="text-align: center; vertical-align: middle;">Cargos adicionales (COP)</th>
+                        <th style="text-align: center; vertical-align: middle;">Fecha de pago</th>
+                        <th style="text-align: center; vertical-align: middle;">Comprobante de pago</th>
+                        <th style="text-align: center; vertical-align: middle;">Cliente</th>
                     </tr>
                 </thead>
                 <tbody>

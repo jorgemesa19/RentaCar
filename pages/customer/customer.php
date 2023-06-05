@@ -43,7 +43,7 @@
                         <th>Nombre</th>
                         <th>Dirección</th>
                         <th>Numero de contacto</th>
-                        <th>Cuenta de FB</th>
+                        <th>Email</th>
                         <th>Nombre de usuario</th>
                         <th>Contraseña</th>
                         <th>Estado</th>
@@ -96,7 +96,7 @@
                         echo "<tr>
                             <td class='text-center'>
                                 <button class='btn elevation-1 btn-sm btn-success btn-xs' data-toggle='modal' data-target='#edit-customer-$customer_id'>
-                                    <i class='nav-icon fas fa-pen'></i> Edit
+                                    <i class='nav-icon fas fa-pen'></i> Editar
                                 </button> 
                                 $delete_btn
                                 <a href='../customer-credential/customer-credential.php?customer_id=$customer_id&customer_name=$customer_name'>

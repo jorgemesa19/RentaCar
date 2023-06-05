@@ -5,11 +5,11 @@
             <div class="modal-body">
                 <input type="text" class="form-control" name="admin_id" value="<?php echo $admin_id ?>" hidden>
                 <input type="text" class="form-control" name="name" value="<?php echo $name ?>" hidden>
-                Estas seguro de que quieres eliminar? <b><?php echo $name;?></b>?
+                ¿Estás seguro de que quieres eliminar <b><?php echo $name;?></b>?
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <input type="submit" class="btn btn-danger" name="delete-admin" value="Delete">
+              <input type="submit" class="btn btn-danger" name="delete-admin" value="Eliminar">
             </div>
           </div>
             </form>

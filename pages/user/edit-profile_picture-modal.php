@@ -38,7 +38,7 @@ uploadField<?php echo $user_id; ?>.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'File is not an Image'
+                title: 'El archivo no es una imagen'
                 })
                 });
 
@@ -58,7 +58,7 @@ uploadField<?php echo $user_id; ?>.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'Imagen muy grande, el máximo permitido es de 2mb.'
+                title: 'La imagen excede los 2mb'
                 })
                 });
 

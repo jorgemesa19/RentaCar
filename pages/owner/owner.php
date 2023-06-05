@@ -39,14 +39,14 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th class='text-center'>Imagen</th>
-                        <th>Nombre</th>
-                        <th>Dirección</th>
-                        <th>Nro. Contacto</th>
-                        <th>Cuenta de FB</th>
-                        <th>Usuario</th>
-                        <th>Contraseña</th>
-                        <th>Estado</th>
+                        <th class='text-center' style="text-align: center; vertical-align: middle;">Imagen</th>
+                        <th style="text-align: center; vertical-align: middle;">Nombre</th>
+                        <th style="text-align: center; vertical-align: middle;">Dirección</th>
+                        <th style="text-align: center; vertical-align: middle;">Nro. Contacto</th>
+                        <th style="text-align: center; vertical-align: middle;">Email</th>
+                        <th style="text-align: center; vertical-align: middle;">Usuario</th>
+                        <th style="text-align: center; vertical-align: middle;">Contraseña</th>
+                        <th style="text-align: center; vertical-align: middle;">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -106,7 +106,7 @@
                             </td>
                             <td class='text-center'>
                                 <img src='../uploads/$profile_image' class='img' style='width:100px;' alt='Image'><br>
-                                <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_image-$owner_id'><i class='nav-icon fas fa-pen'></i> Editar foto</button>
+                                <button class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_image-$owner_id'><i class='nav-icon fas fa-pen'></i> Editar imagen</button>
                             </td>
                             <td>$owner_name</td>
                             <td>$address</td>

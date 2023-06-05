@@ -19,11 +19,11 @@
                   $owner_name = $_GET['owner_name'];
                   
                 $back_btn = "<a href='../owner/owner.php'>
-                                <button class='btn btn-default'>Atrás</button>
+                                <button class='btn btn-default'>volver</button>
                               </a>";
               }
               ?>
-            <h1>Credencial del propietario - <b><?php echo $owner_name; ?></b></h1>
+            <h1>Credenciales del propietario <b><?php echo $owner_name; ?></b></h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -47,8 +47,8 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Nombre de la credencial</th>
-                        <th>Archivo</th>
+                        <th style="text-align: center; vertical-align: middle;">Nombre de la credencial</th>
+                        <th style="text-align: center; vertical-align: middle;">Archivo</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -84,10 +84,10 @@
                         
                             $file_upload_text
                             <a href='../uploads/$file_upload' target='_blank'>
-                            <button class='btn btn-xs btn-info elevation-1'><i class='nav-icon fas fa-download'></i> Download</button>
+                            <button class='btn btn-xs btn-info elevation-1'><i class='nav-icon fas fa-download'></i> Descargar</button>
                             </a>
                             <button class='btn elevation-1 btn-sm btn-warning btn-xs' data-toggle='modal' data-target='#edit-file_upload-$owner_credential_id'>
-                                <i class='nav-icon fas fa-pen'></i> Change File
+                                <i class='nav-icon fas fa-pen'></i> Cambiar archivo
                             </button>
                         </td>
                         </tr>";

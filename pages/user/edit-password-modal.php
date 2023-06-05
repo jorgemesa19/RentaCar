@@ -5,12 +5,12 @@
             <div class="modal-body">
                 <div class="form-group">
                     <label for="password_<?php echo $user_id; ?>">Nueva contraseña</label>
-                    <input type="password" class="form-control form-control-border" name="password" id="password_<?php echo $user_id; ?>" placeholder="Contraseña" required>
+                    <input type="password" class="form-control form-control-border" name="password" id="password_<?php echo $user_id; ?>" placeholder="Nueva contraseña" required>
                     <input type="text" name="user_id" value="<?php echo $user_id; ?>" hidden>
                 </div>
                 <div class="form-group">
                     <label for="confirm_password_<?php echo $user_id; ?>">Confirmar contraseña</label>
-                    <input type="password" class="form-control form-control-border" id="confirm_password_<?php echo $user_id; ?>" placeholder="Contraseña" oninput="confirmPassword<?php echo $user_id; ?>()" required>
+                    <input type="password" class="form-control form-control-border" id="confirm_password_<?php echo $user_id; ?>" placeholder="Confirmar contraseña" oninput="confirmPassword<?php echo $user_id; ?>()" required>
                     <div id="response_confirm_password_<?php echo $user_id; ?>"></div>
                 </div>
             </div>

@@ -27,8 +27,8 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                     </div>
 
                     <div class="form-group">
-                        <label for="car_model_year">Año del modelo</label>
-                        <input type="text" class="form-control form-control-border" id="car_model_year" name="car_model_year" placeholder="Modelo del carro" required>
+                        <label for="car_model_year">Modelo (año)</label>
+                        <input type="text" class="form-control form-control-border" id="car_model_year" name="car_model_year" placeholder="Modelo (año)" required>
                     </div>
 
                     <div class="form-group">
@@ -42,8 +42,8 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                     </div>
 
                     <div class="form-group">
-                        <label for="capacity">Capacidad</label>
-                        <input type="text" class="form-control form-control-border" id="capacity" name="capacity" placeholder="Capacidad" required>
+                        <label for="capacity">Capacidad (número)</label>
+                        <input type="text" class="form-control form-control-border" id="capacity" name="capacity" placeholder="Capacidad (número)" required>
                     </div>
 
                     <div class="form-group">
@@ -57,7 +57,7 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                     </div>
 
                     <div class="form-group">
-                        <label for="owner_id">Dueño</label>
+                        <label for="owner_id">Propietario</label>
                         <select class='custom-select form-control-border' name="owner_id">
                             <?php
                             $sql = "";
@@ -97,7 +97,7 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                    <input type="submit" class="btn btn-primary" id="add-car_btn" name="add-car" value="Save">
+                    <input type="submit" class="btn btn-primary" id="add-car_btn" name="add-car" value="Guardar">
                 </div>
             </div>
         </form>

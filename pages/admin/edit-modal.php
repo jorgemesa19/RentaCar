@@ -15,7 +15,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="address">Direccion</label>
+                        <label for="address">Dirección</label>
                         <textarea class="form-control form-control-border" rows="3" id="address" name="address" value="" placeholder="Dirección" required><?php echo $address; ?></textarea>
                     </div>
                     
@@ -34,7 +34,7 @@
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
                     <input type="text"  name="admin_id" value="<?php echo $admin_id;?>" hidden>
-                    <input type="submit" class="btn btn-primary " id="edit-admin_btn" name="edit-admin" value="Save">
+                    <input type="submit" class="btn btn-primary " id="edit-admin_btn" name="edit-admin" value="Guardar">
                 </div>
             </div>
         </form>

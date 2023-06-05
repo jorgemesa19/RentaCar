@@ -4,11 +4,11 @@
           <div class="modal-content ">
             <div class="modal-body">
                 <input type="text" class="form-control" name="rental_id" value="<?php echo $rental_id ?>" hidden>
-                Esta seguro de eliminar?
+                ¿Está seguro de eliminar la renta de <?php echo $customer_name ?>?
             </div>
             <div class="modal-footer justify-content-between">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <input type="submit" class="btn btn-danger" name="delete-rental" value="Delete">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+              <input type="submit" class="btn btn-danger" name="delete-rental" value="Eliminar">
             </div>
           </div>
             </form>

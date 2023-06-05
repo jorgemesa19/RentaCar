@@ -13,7 +13,7 @@
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
                     <input type="text"  name="owner_credential_id" value="<?php echo $owner_credential_id;?>" hidden>
-                    <input type="submit" class="btn btn-primary " id="edit-ownercredential_btn" name="edit-ownercredential" value="guardar">
+                    <input type="submit" class="btn btn-primary " id="edit-ownercredential_btn" name="edit-ownercredential" value="Guardar">
                 </div>
             </div>
         </form>

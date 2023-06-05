@@ -22,7 +22,7 @@ if(isset($_POST['email'])){
     $count = $result['cnt_email'];
         
     if($count > 0){
-        $response = "<span style='color: red;'>Ya existe</span>";
+        $response = "<span style='color: red;'>¡El Email ingresado ya existe!</span>";
         echo "<script>
         document.getElementById('add-user_btn').disabled = true;
         document.getElementById('email').className = 'form-control form-control-border is-invalid';

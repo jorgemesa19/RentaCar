@@ -41,7 +41,7 @@
             <a href="../car/car.php" class="nav-link">
                 <i class="nav-icon fa  ion-android-car"></i>
                 <p>
-                    Vehiculos
+                    Vehículos
                 </p>
             </a>
         </li>

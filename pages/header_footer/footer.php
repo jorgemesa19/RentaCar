@@ -1,4 +1,4 @@
 
   <footer class="main-footer border-0">
-    SISTEMA DE RENTA DE VEHICULOS
+    SISTEMA DE RENTA DE VEHÍCULOS
   </footer>

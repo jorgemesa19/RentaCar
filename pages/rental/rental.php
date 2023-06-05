@@ -40,13 +40,13 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Fecha de renta</th>
-                        <th>Tiempo de renta</th>
-                        <th>Fecha de devolución</th>
-                        <th>Dueño</th>
-                        <th>Nombre vehiculo</th>
-                        <th>Cliente</th>
-                        <th>Estado</th>
+                        <th style="text-align: center; vertical-align: middle;">Fecha de renta</th>
+                        <th style="text-align: center; vertical-align: middle;">Tiempo de renta</th>
+                        <th style="text-align: center; vertical-align: middle;">Fecha de devolución</th>
+                        <th style="text-align: center; vertical-align: middle;">Dueño</th>
+                        <th style="text-align: center; vertical-align: middle;">Nombre vehiculo</th>
+                        <th style="text-align: center; vertical-align: middle;">Cliente</th>
+                        <th style="text-align: center; vertical-align: middle;">Estado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -66,7 +66,8 @@
                     INNER JOIN tblcar AS car
                     ON rental.car_id = car.car_id
                     INNER JOIN tblcustomer AS customer
-                    ON rental.customer_id = customer.customer_id";
+                    ON rental.customer_id = customer.customer_id
+                    LIMIT 100";
                 }
                 if ($_SESSION['user_type'] == "Owner"){
                     $owner_id = $_SESSION['user_id'];
@@ -78,7 +79,8 @@
                     ON rental.car_id = car.car_id
                     INNER JOIN tblcustomer AS customer
                     ON rental.customer_id = customer.customer_id
-                    WHERE owner.owner_id = $owner_id";
+                    WHERE owner.owner_id = $owner_id
+                    LIMIT 100";
                 }
                 if ($_SESSION['user_type'] == "Customer"){
                     $customer_id = $_SESSION['user_id'];
@@ -90,7 +92,8 @@
                     ON rental.car_id = car.car_id
                     INNER JOIN tblcustomer AS customer
                     ON rental.customer_id = customer.customer_id
-                    WHERE customer.customer_id = $customer_id";
+                    WHERE customer.customer_id = $customer_id
+                    LIMIT 100";
                 }
                 
                 $stmt = $conn->prepare($sql);

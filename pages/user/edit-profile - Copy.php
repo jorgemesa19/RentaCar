@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Edit User</h1>
+            <h1>Editar usuario</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -46,7 +46,7 @@
                               <img class="img-circle elevation-2" style="height:200px;" src="../uploads/<?php echo $profile_picture; ?>" alt="User profile picture"><br>
                           </li>
                           <li class="list-group-item">
-                              <button type="button" class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_picture-<?php echo $user_id;?>'><i class='nav-icon fas fa-pen'></i> Edit Picture</button>
+                              <button type="button" class='btn btn-sm elevation-1 btn-warning btn-xs' data-toggle='modal' data-target='#edit-profile_picture-<?php echo $user_id;?>'><i class='nav-icon fas fa-pen'></i>Editar foto</button>
                           </li>
                       </ul>
                   </div>

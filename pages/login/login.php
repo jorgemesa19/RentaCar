@@ -7,7 +7,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SISTEMA DE RENTA DE AUTOS</title>
+  <title>SISTEMA DE RENTA DE VEHÍCULOS</title>
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
@@ -25,7 +25,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <div class="login-logo">
-    <a href="#"><b>SISTEMA DE </b>RENTA DE AUTOS</a>
+    <a href="#"><b>SISTEMA DE </b>RENTA DE VEHÍCULOS</a>
   </div>
   <!-- /.login-logo -->
   <div class="card">

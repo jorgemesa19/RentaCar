@@ -18,12 +18,12 @@ $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
                     
                     <div class="form-group">
                         <label for="payment_amount">Monto de pago (COP)</label>
-                        <input type="number" class="form-control form-control-border" id="payment_amount" name="payment_amount" placeholder="Monto de pago" required>
+                        <input type="number" class="form-control form-control-border" id="payment_amount" name="payment_amount" placeholder="Monto de pago (COP)" required>
                     </div>
                     
                     <div class="form-group">
-                        <label for="add_charges">Agregar cargos adicionales (COP)</label>
-                        <input type="number" class="form-control form-control-border" id="add_charges" name="add_charges" placeholder="Agregar autos" required>
+                        <label for="add_charges">Añadir cargos adicionales (COP)</label>
+                        <input type="number" class="form-control form-control-border" id="add_charges" name="add_charges" placeholder="Añadir cargos adicionales (COP)" required>
                     </div>
                     
                     <div class="form-group">

@@ -20,7 +20,7 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="car_id">Carro</label>
+                        <label for="car_id">Vehículo</label>
                         <select class='custom-select form-control-border' name="car_id">
                             <?php
                             $host = "localhost";
@@ -29,7 +29,7 @@
                             $dbname = "bd_rentaCar";
                             $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
 
-                            $sql = "SELECT car_id, car_name FROM tblcar WHERE status = 1";
+                            $sql = "SELECT car_id, car_name FROM tblcar WHERE status = 1 LIMIT 100";
                             $stmt = $conn->query($sql);
                             while ($row = $stmt->fetch()) {
                                 $car_id = $row['car_id'];
@@ -72,7 +72,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
-                    <input type="submit" class="btn btn-primary " id="add-rental_btn" name="add-rental" value="Save">
+                    <input type="submit" class="btn btn-primary " id="add-rental_btn" name="add-rental" value="Guardar">
                 </div>
             </div>
         </form>

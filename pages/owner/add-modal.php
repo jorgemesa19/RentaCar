@@ -25,8 +25,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="fb_account">Cuenta de FB</label>
-                        <input type="text" class="form-control form-control-border" id="fb_account" name="fb_account" placeholder="Cuenta de FB" required>
+                        <label for="fb_account">Email</label>
+                        <input type="text" class="form-control form-control-border" id="fb_account" name="fb_account" placeholder="Email" required>
                     </div>
                     
                     <div class="form-group">

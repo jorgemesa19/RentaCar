@@ -33,7 +33,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
-                    <input type="submit" class="btn btn-primary " id="add-admin_btn" name="add-admin" value="Save">
+                    <input type="submit" class="btn btn-primary " id="add-admin_btn" name="add-admin" value="Guardar">
                 </div>
             </div>
         </form>

@@ -4,7 +4,7 @@
           <div class="modal-content">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="profile_image<?php echo $customer_id; ?>">Elegir nuevo foto para:  <?php echo "<b>$customer_name</b>"; ?></label>
+                    <label for="profile_image<?php echo $customer_id; ?>">Elegir nuevo foto para <?php echo "<b>$customer_name</b>"; ?></label>
                     <input type="file" class="form-control form-control-border" id="profile_image<?php echo $customer_id; ?>" name="profile_image" accept="image/*" required>
                     <input type="text" name="customer_id" value="<?php echo $customer_id; ?>" hidden>
                     <input type="text" name="old_profile_image" value="<?php echo $profile_image; ?>" hidden>
@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-              <input type="submit" class="btn btn-primary" name="edit-profile_image" value="Save">
+              <input type="submit" class="btn btn-primary" name="edit-profile_image" value="Guardar">
             </div>
           </div>
             </form>

@@ -6,7 +6,7 @@
 
                     <div class="form-group">
                         <label for="review">Revisión</label>
-                        <textarea class="form-control form-control-border" rows="3" id="review" name="review" placeholder="Revisión" required></textarea>
+                        <textarea class="form-control form-control-border" rows="3" id="review" name="review" placeholder="Descripción de la revisión" required></textarea>
                     </div>
 
                     <div class="form-group">
@@ -49,7 +49,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
-                    <input type="submit" class="btn btn-primary " id="add-carreview_btn" name="add-carreview" value="Save">
+                    <input type="submit" class="btn btn-primary " id="add-carreview_btn" name="add-carreview" value="Guardar">
                 </div>
             </div>
         </form>

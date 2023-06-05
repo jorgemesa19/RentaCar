@@ -4,7 +4,7 @@
           <div class="modal-content">
             <div class="modal-body">
                 <div class="form-group">
-                    <label for="login_image">Elegir imagen</label>
+                    <label for="login_image">Seleccionar imagen</label>
                     <input type="file" class="form-control form-control-border" id="login_image" name="login_image" accept="image/*" required>
                     <input type="text" name="setting_id" value="<?php echo $setting_id;?>" hidden>
                     <input type="text" name="old_login_image" value="<?php echo $login_image; ?>" hidden>
@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default btn-flat" data-dismiss="modal">Cerrar</button>
-              <input type="submit" class="btn btn-primary btn-flat" name="edit-login_image" value="Save">
+              <input type="submit" class="btn btn-primary btn-flat" name="edit-login_image" value="Guardar">
             </div>
           </div>
             </form>
@@ -38,7 +38,7 @@ uploadField.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'File is not an Image'
+                title: '¡El archivo no es una imagen!'
                 })
                 });
 
@@ -58,7 +58,7 @@ uploadField.onchange = function() {
                 $(document).ready(function(){
                 Toast.fire({
                 icon: 'error',
-                title: 'Image too large! Image must not exceed 2mb.'
+                title: '¡La imagen pesa más de 2mb!'
                 })
                 });
 

@@ -25,8 +25,8 @@
                     </div>
                     
                     <div class="form-group">
-                        <label for="fb_account">Cuenta FB</label>
-                        <input type="text" class="form-control form-control-border" id="fb_account" name="fb_account" placeholder="Cuenta FB" required>
+                        <label for="fb_account">Email</label>
+                        <input type="text" class="form-control form-control-border" id="fb_account" name="fb_account" placeholder="Email" required>
                     </div>
                     
                     <div class="form-group">
@@ -50,8 +50,8 @@
                     
                 </div>
                 <div class="modal-footer justify-content-between">
-                    <button type="button" class="btn btn-default " data-dismiss="modal">Close</button>
-                    <input type="submit" class="btn btn-primary " id="add-customer_btn" name="add-customer" value="Save">
+                    <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
+                    <input type="submit" class="btn btn-primary " id="add-customer_btn" name="add-customer" value="Guardar">
                 </div>
             </div>
         </form>
