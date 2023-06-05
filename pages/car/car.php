@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Autos</h1>
+            <h1>Vehiculos</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -40,7 +40,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>nombre del auto</th>
+                        <th>nombre del vehiculo</th>
                         <th>Descripción</th>
                         <th>Modelo</th>
                         <th>Marca</th>

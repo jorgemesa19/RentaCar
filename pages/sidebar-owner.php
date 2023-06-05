@@ -5,7 +5,7 @@
             <a href="../dashboard/dashboard.php" class="nav-link">
                 <i class="nav-icon fa  fa-cube"></i>
                 <p>
-                    Panel administrativo
+                    Panel de propietarios
                 </p>
             </a>
         </li>
@@ -32,7 +32,7 @@
             <a href="../car/car.php" class="nav-link">
                 <i class="nav-icon fa  ion-android-car"></i>
                 <p>
-                    Carros
+                    Vehiculos
                 </p>
             </a>
         </li>

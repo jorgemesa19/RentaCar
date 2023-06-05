@@ -12,7 +12,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Rentas</h1>
+            <h1>Alquileres</h1>
           </div>
         </div>  
       </div><!-- /.container-fluid -->
@@ -44,7 +44,7 @@
                         <th>Tiempo de renta</th>
                         <th>Fecha de devolución</th>
                         <th>Dueño</th>
-                        <th>Carro</th>
+                        <th>Nombre vehiculo</th>
                         <th>Cliente</th>
                         <th>Estado</th>
                     </tr>

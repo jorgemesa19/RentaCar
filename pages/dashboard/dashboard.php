@@ -43,7 +43,7 @@
                             echo "Error al conectar a la base de datos.";
                         }
                         ?>
-                        <p>No. de Cars</p>
+                        <p>Nro. de autos</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-car"></i>
@@ -64,7 +64,7 @@
                             echo "Error al conectar a la base de datos.";
                         }
                         ?>
-                        <p>N. de dueños</p>
+                        <p>Nro. de propietarios</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-contacts"></i>
@@ -85,7 +85,7 @@
                             echo "Error al conectar a la base de datos.";
                         }
                         ?>
-                        <p>No. de clientes</p>
+                        <p>Nro. de clientes</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-contacts"></i>
