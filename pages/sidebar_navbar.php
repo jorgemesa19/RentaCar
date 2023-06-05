@@ -6,7 +6,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-          <a href='../dashboard/dashboard.php' class='nav-link'><p style='font-size:20px;'>SISTEMA DE RENTA DE CARROS</p></a>
+          <a href='../dashboard/dashboard.php' class='nav-link'><p style='font-size:20px;'>SISTEMA DE RENTA DE VEHICULOS</p></a>
       </li>
     </ul>
 
@@ -44,7 +44,7 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-1">
     <!-- Brand Logo -->
     <a href="#" class="brand-link text-center">
-       Sistema de renta de carros
+       Hola <?php echo $username; ?>
     </a>
 
     <!-- Sidebar -->

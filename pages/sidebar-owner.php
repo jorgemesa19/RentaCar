@@ -23,7 +23,7 @@
             <a href="../owner-credential/owner-credential.php" class="nav-link">
                 <i class="nav-icon fa  ion-briefcase"></i>
                 <p>
-                    Mi credencial
+                    Mis credenciales
                 </p>
             </a>
         </li>
@@ -41,7 +41,7 @@
             <a href="../rental/rental.php" class="nav-link">
                 <i class="nav-icon fa  ion-android-list"></i>
                 <p>
-                    Rentas
+                    Alquileres
                 </p>
             </a>
         </li>

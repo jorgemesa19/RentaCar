@@ -5,7 +5,7 @@
                 <div class="modal-body">
                     
                     <div class="form-group">
-                        <label for="owner_name">Nombre del dueño</label>
+                        <label for="owner_name">Nombre del propietario</label>
                         <input type="text" class="form-control form-control-border" id="owner_name" name="owner_name" placeholder="Nombre del dueño" required>
                     </div>
                     
@@ -51,7 +51,7 @@
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-default " data-dismiss="modal">Cerrar</button>
-                    <input type="submit" class="btn btn-primary " id="add-owner_btn" name="add-owner" value="Save">
+                    <input type="submit" class="btn btn-primary " id="add-owner_btn" name="add-owner" value="Guardar">
                 </div>
             </div>
         </form>
