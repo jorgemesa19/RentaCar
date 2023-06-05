@@ -43,7 +43,7 @@
                             echo "Error al conectar a la base de datos.";
                         }
                         ?>
-                        <p>Nro. de autos</p>
+                        <p>Nro. de vehiculos</p>
                     </div>
                     <div class="icon">
                         <i class="ion ion-android-car"></i>
